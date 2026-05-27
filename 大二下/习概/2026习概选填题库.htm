@@ -1,0 +1,3215 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)https://zzy.vintces.icu/md/task/f162230d-a39b-4d42-9b16-ede73c7d09b9/html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>
+/* 
+ *     Typora Theme - Lapis    /    Author - YiNN 
+ *     https://github.com/YiNNx/typora-theme-lapis
+ */
+
+:root {
+    --text-color: #40464f;
+    /* Text */
+    --primary-color: #4870ac;
+    /* Primary Color */
+    --bg-color: #ffffff;
+    --side-bar-bg-color: var(--bg-color);
+    /* Background */
+
+    --marker-color: #a2b6d4;
+    /* List Marker */
+    --source-color: #a8a8a9;
+    /* for comment / link source */
+    --highlight-color: #ffffb5c2;
+    /* Highlight */
+    --header-span-color: var(--primary-color);
+    /* h2 Span Color */
+    --block-bg-color: #f6f8fa;
+    /* Block Background */
+    --img-shadow-color: #e3e8f0;
+
+    /* Overwrite of Typora Base Color */
+    --search-hit-bg-color: var(--select-text-bg-color);
+    --search-select-bg-color: #5bb3ff;
+    --control-text-hover-color: #a2b6d4;
+    --rawblock-edit-panel-bd: var(--block-bg-color);
+    --item-hover-bg-color: rgb(246 248 250);
+    --active-file-bg-color: var(--block-bg-color);
+}
+
+@media print {
+    :root {
+        --text-color: rgb(0, 0, 0);
+    }
+
+    .typora-export {
+        margin: 2mm 6mm 0 6mm;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: transparent !important;
+    }
+}
+
+/*
+ * Font-face for Cantarell, Source Han Serif CN and JetBrains Mono
+ */
+
+@font-face {
+    font-family: "Cantarell";
+    src: url('lapis/Cantarell-VF-fixed.otf');
+}
+
+@font-face {
+    font-family: "JetBrainsMono";
+    src: url('lapis/JetBrainsMono-Regular.ttf');
+}
+
+@font-face {
+    font-family: "SourceHanSerifCN";
+    src: url('lapis/SourceHanSerifCN-Medium.ttf');
+}
+
+@font-face {
+    font-family: "SourceHanSerifCN";
+    src: url('lapis/SourceHanSerifCN-Bold.ttf');
+    font-weight: bold;
+}
+
+/*
+ * Basic Style
+ */
+
+#write {
+    max-width: 950px;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    line-height: 1.6;
+    word-spacing: 0px;
+    letter-spacing: 0px;
+    word-break: break-word;
+    word-wrap: break-word;
+    text-align: justify;
+
+    font-family: 'Cantarell', 'SourceHanSerifCN', 'JetBrainsMono';
+    margin-bottom: 20rem;
+}
+
+.searchpanel-search-option-btn {
+    position: absolute;
+    width: 24px;
+    height: 16px;
+    right: 5px;
+    top: 5px;
+    z-index: 99;
+    cursor: pointer;
+    margin-top: 1px;
+    padding: 1px;
+    border-radius: 3px;
+    line-height: 10px;
+    border: 1px solid #ddd;
+    border-color: var(--active-toggle-btn-color);
+}
+
+/* Strong */
+
+#write strong {
+    color: var(--primary-color);
+}
+
+/* Link */
+
+#write a {
+    color: var(--primary-color);
+    /* font-family: "Cantarell"; */
+}
+
+#write .md-p a,
+#write .md-heading a,
+[md-inline=url],
+[md-inline=link]>.md-content {
+    word-wrap: break-word;
+    text-decoration: underline solid;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+}
+
+#write h2.md-heading a {
+    text-decoration: underline;
+    border-bottom: 0;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.2px;
+}
+
+.md-meta,
+[md-inline=link]>.md-content,
+[md-inline=image]>.md-meta,
+.md-image>.md-meta {
+    word-break: break-all;
+    font-weight: normal;
+    color: var(--source-color);
+    font-family: "JetBrainsMono";
+    font-size: 90%;
+}
+
+
+/* 
+ * TOC
+ */
+
+.md-toc-content {
+    font-family: 'SourceHanSerifCN';
+}
+
+.md-toc-content:empty:before {
+    color: var(--primary-color);
+}
+
+#write div.md-toc-tooltip {
+    font-family: 'SourceHanSerifCN';
+    color: var(--primary-color);
+    position: static;
+    margin-top: 10px;
+    background-color: var(--block-bg-color);
+    line-height: 1.6rem;
+    padding: 0.3rem 0.75rem;
+    border-top: none;
+    /* border-left: 2px solid var(--primary-color);
+     */
+    border-radius: .5rem;
+}
+
+.md-toc:focus .md-toc-content {
+    border-color: var(--bg-color);
+    margin: 9px -1px;
+    margin-top: 9px;
+}
+
+.md-toc .md-toc-content {
+    border-color: var(--bg-color);
+    margin: 10px 0px;
+    margin-top: 10px;
+}
+
+
+/* mark */
+
+mark {
+    background: var(--highlight-color);
+    padding: 1px .15rem;
+    border-radius: 1px;
+    color: inherit;
+}
+
+/* 
+ * Paragraph
+ */
+
+#write+p,
+#write blockquote p,
+#write .md-alert p {
+    font-size: 1.1rem;
+    padding-top: .2rem;
+    padding-bottom: .2rem;
+    margin: 0;
+    line-height: 1.8rem;
+    color: var(--text-color);
+}
+
+/*
+ * Header
+ */
+
+#write h4,
+#write h5,
+#write h6 {
+    font-weight: normal;
+}
+
+#write h1,
+#write h2,
+#write h3,
+#write h4,
+#write h5,
+#write h6 {
+    font-family: 'SourceHanSerifCN';
+    padding: 0px;
+    color: var(--primary-color);
+}
+
+#write h1 {
+    text-align: center;
+}
+
+#write h2 {
+    padding: 1px 12.5px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+#write h2,
+#write h2 code {
+    background-color: var(--header-span-color);
+}
+
+#write h2,
+#write h2 a,
+#write h2 code,
+#write h2 strong,
+#write h2 script {
+    color: var(--bg-color);
+}
+
+#write h2 a {
+    border-bottom-color: var(--bg-color) !important;
+}
+
+#write h1 {
+    font-size: 2rem;
+}
+
+#write h2 {
+    font-size: 1.5rem;
+}
+
+#write h3 {
+    font-size: 1.4rem;
+}
+
+#write h4 {
+    font-size: 1.2rem;
+}
+
+#write h5 {
+    font-size: 1.1rem;
+}
+
+#write h6 {
+    font-size: 1.1rem;
+}
+
+#write h1 {
+    padding-top: 0.9rem;
+    margin-bottom: 2.3rem;
+}
+
+#write h2 {
+    margin: .3em 0;
+}
+
+#write h3 {
+    margin: 1em 0 1em;
+}
+
+#write h4 {
+    margin: 0.8em 0 0.8em;
+}
+
+#write h5 {
+    margin: 0.6em 0 0.6em;
+}
+
+#write h6 {
+    margin: 0.4em 0 0.4em;
+}
+
+blockquote h3.md-focus:before,
+blockquote h4.md-focus:before,
+blockquote h5.md-focus:before,
+blockquote h6.md-focus:before {
+    left: -1.3rem;
+}
+
+/*
+ * List
+ */
+
+::marker {
+    font-weight: bold;
+    color: var(--marker-color);
+}
+
+li.md-list-item {
+    margin: 0.4rem 0;
+}
+
+#write ul,
+#write ol {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding-left: 20px;
+}
+
+#write ul {
+    list-style-type: disc;
+}
+
+#write em {
+    padding: 0 3px 0 0;
+}
+
+#write ul ul {
+    list-style-type: square;
+}
+
+#write ol {
+    list-style-type: decimal;
+}
+
+#write li section {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    line-height: 1.7rem;
+    text-align: justify;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/*
+ * Quote
+ */
+
+#write blockquote {
+    display: block;
+    font-size: .9em;
+    overflow: auto;
+    border-left: 3px solid var(--primary-color);
+    padding: 15px 30px 15px 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background: var(--block-bg-color);
+}
+
+.md-alert {
+    display: block;
+    overflow: auto;
+    border-left: 3px solid var(--primary-color);
+    padding: 15px 30px 15px 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background: var(--block-bg-color);
+}
+
+.md-alert-text-container {
+    font-size: 1.2em;
+}
+
+.md-alert-text-important {
+    color: #614f9c;
+}
+
+.md-alert.md-alert-important {
+    background-color: #614f9c0a;
+    border-left-color: #614f9c;
+}
+
+.md-alert-text-note {
+    color: #527da8;
+}
+
+.md-alert.md-alert-note {
+    background-color: #527da80a;
+    border-left-color: #527da8;
+}
+
+.md-alert-text-tip {
+    color: #428485;
+}
+
+.md-alert.md-alert-tip {
+    background-color: #4284850a;
+    border-left-color: #428485;
+}
+
+.md-alert-text-warning {
+    color: #a88652;
+}
+
+.md-alert.md-alert-warning {
+    background-color: #9b80490a;
+    border-left-color: #a88652;
+}
+
+
+.md-alert-text-caution {
+    color: #a34f55;
+}
+
+.md-alert.md-alert-caution {
+    background-color: #a34f550a;
+    border-left-color: #a34f55;
+}
+
+
+/*
+ * Inline code
+ */
+
+#write code {
+    color: var(--primary-color);
+    font-size: 94%;
+    font-weight: normal;
+    word-wrap: break-word;
+    padding: 2px 4px 2px;
+    border-radius: 3px;
+    margin: 2px;
+    background-color: var(--block-bg-color);
+    font-family: 'JetBrainsMono';
+    word-break: break-all;
+}
+
+/*
+ * Img
+ */
+
+#write img {
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+#write p>.md-image:only-child:not(.md-img-error) img,
+#write p>img:only-child {
+    filter: drop-shadow(var(--img-shadow-color) 0px 6px 6px);
+    display: block;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/*
+ * Table
+ */
+#write table {
+    display: table;
+    text-align: justify;
+    overflow-x: auto;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    font-size: 1em;
+    margin: 0px 0px 20px;
+    width: 100%;
+}
+
+#write tbody {
+    border: 0;
+}
+
+#write table tr {
+    border: 0;
+    border-top: 1px solid #ccc;
+}
+
+#write table tr th,
+#write table tr td {
+    font-size: 1rem;
+    border: 1px solid #d9dfe4;
+    padding: 5px 10px;
+    text-align: justify;
+}
+
+#write table tr th {
+    font-family: SourceHanSerifCN;
+    text-align: center;
+    min-width: 10rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+#write table tr td:hover,
+#write table tr th:hover {
+    background-color: var(--block-bg-color);
+}
+
+table td {
+    min-width: 32px;
+}
+
+.md-table-resize-popover {
+    width: auto !important;
+}
+
+/* Footnote */
+
+sup.md-footnote {
+    background-color: var(--block-bg-color);
+    color: var(--primary-color);
+}
+
+.md-def-name {
+    color: var(--primary-color);
+}
+
+/*
+ * Math Script 
+ */
+
+.md-inline-math script {
+    color: var(--primary-color);
+}
+
+.md-rawblock-control:not(.md-rawblock-tooltip) {
+    background: var(--bg-color);
+    color: var(--md-char-color);
+}
+
+
+.code-tooltip {
+    box-shadow: none;
+}
+
+.md-rawblock-tooltip.md-rawblock-control {
+    border-radius: 1rem;
+}
+
+.md-rawblock .md-rawblock-tooltip {
+    inset: auto 0.3rem auto auto;
+    transform: translateY(-120%);
+}
+
+/* 
+ * Comment
+ */
+.md-comment {
+    color: var(--source-color);
+    opacity: 1;
+    font-family: 'JetBrainsMono';
+}
+
+/*
+ * Dividing line
+ */
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 2px solid #eef2f5;
+    border-radius: 2px;
+}
+
+/* Checkbox */
+
+#write input[type=checkbox] {
+    width: 0;
+}
+
+.task-list-item input::before {
+    content: "";
+    display: inline-block;
+    width: 1.0125rem;
+    height: 1.0125rem;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid var(--marker-color);
+    border-radius: 1.2rem;
+    background-color: #fdfdfd;
+    margin-left: -0.1rem;
+    margin-right: 0.1rem;
+    margin-top: -.6rem;
+}
+
+.task-list-item input:checked::before {
+    content: '✓';
+    font-weight: bold;
+    -webkit-text-stroke: 1px var(--primary-color);
+    color: var(--primary-color);
+    background-color: var(--bg-color);
+    font-size: 0.75rem;
+    line-height: 0.8rem;
+}
+
+blockquote .task-list-item input::before {
+    margin-top: .2rem;
+}
+
+/*
+ * Sidebar
+ */
+#typora-sidebar {
+    font-family: 'Cantarell', 'SourceHanSerifCN';
+    height: 100%;
+    color: var(--text-color);
+    font-size: 0.92rem;
+    background-color: var(--bg-color);
+}
+
+#sidebar-content.sidebar-content {
+    margin-top: .5rem;
+}
+
+.html-for-mac #write input[type=checkbox] {
+    margin-top: 0.65rem;
+}
+
+.html-for-mac #write .task-list-item input::before {
+    margin-top: -.85rem;
+}
+
+
+/*
+ * Sidebar - FileNode
+ */
+
+.active-tab-files #info-panel-tab-file .info-panel-tab-border,
+.active-tab-outline #info-panel-tab-outline .info-panel-tab-border,
+.ty-show-search #info-panel-tab-search .info-panel-tab-border {
+    border-radius: 10px;
+    height: 1px;
+    background-color: var(--primary-color);
+}
+
+.file-node-content {
+    color: var(--primary-color);
+    line-height: 1.6rem;
+}
+
+span.file-node-title-name-part {
+    color: var(--text-color);
+}
+
+span.file-node-title-ext-part {
+    color: var(--text-color);
+}
+
+.file-node-icon {
+    padding-right: 0.2rem;
+}
+
+.file-tree-node.active>.file-node-background {
+    border-left: 4px solid var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/*
+ * Sidebar - Outline
+ */
+
+#outline-content {
+    height: 100%;
+    overflow-x: hidden;
+    line-height: 1.6rem;
+    font-size: .96rem;
+}
+
+#outline-content .outline-active,
+.pin-outline .outline-active {
+    color: var(--primary-color);
+}
+
+.outline-item {
+    padding-left: 2em;
+}
+
+.outline-item>.outline-expander:before {
+    transform: translateY(-1px) !important;
+}
+
+/* Meta Block */
+
+pre.md-meta-block {
+    font-family: 'JetBrainsMono';
+    color: var(--primary-color);
+    background: #f6f8fa;
+    padding: 1.5rem;
+    margin: -37px 0rem 3.8rem;
+    /* border-radius: 1rem; */
+    filter: drop-shadow(var(--img-shadow-color) 0px 3px 3px);
+    /* border-top: 1px solid var(--primary-color); */
+    /* border-bottom: 1px solid var(--primary-color); */
+}
+
+pre.md-fences-advanced.md-focus .md-fences-adv-panel {
+    border-radius: .8rem;
+}
+
+/*
+ * Scrollbar
+ */
+
+#outline-content::-webkit-scrollbar {
+    width: .5rem;
+}
+
+#file-library::-webkit-scrollbar {
+    width: .5rem;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(179, 179, 179, 0.425);
+}
+
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+/* 
+ * Code Block - Style
+ */
+
+.md-fences:before {
+    content: ' ';
+    display: block;
+    width: 100%;
+    background-size: 40px;
+    background-repeat: no-repeat;
+    /* background-color: #282c34; */
+    margin-bottom: -7px;
+    border-radius: 5px;
+    background-position: 10px 10px;
+}
+
+.CodeMirror-wrap .CodeMirror-scroll {
+    overflow-x: auto;
+}
+
+.md-fences .cm-s-inner.CodeMirror {
+    margin: 1.5rem 0;
+}
+
+.cm-s-inner.CodeMirror {
+    padding: 1.2rem .8rem;
+    color: #4f5467;
+    font-family: 'JetBrainsMono';
+    border-radius: 10px;
+    background-color: var(--block-bg-color);
+    /* border: 1px solid #eef2f5;*/
+    line-height: 1.6rem;
+}
+
+.CodeMirror-gutters {
+    border-right: 1px solid #a2b6d452;
+    background: inherit;
+    white-space: nowrap;
+}
+
+pre.CodeMirror-line {
+    padding: 0 1.2rem;
+}
+
+.CodeMirror-linenumber {
+    white-space: nowrap;
+    padding: 0 3px 0 5px;
+    text-align: right;
+    color: var(--primary-color);
+}
+
+/* 
+ * Code Block - Color Scheme
+ */
+
+.cm-s-inner .cm-keyword {
+    color: #1694b6 !important;
+}
+
+.cm-s-inner .cm-operator {
+    color: #2f86d2 !important;
+}
+
+.cm-s-inner .cm-variable,
+.cm-s-inner .cm-builtin,
+.cm-s-inner .cm-header,
+.cm-s-inner .cm-tag,
+.cm-s-inner .cm-property,
+.cm-s-inner .cm-quote {
+    color: #b9218e !important;
+}
+
+.cm-s-inner .cm-variable-2 {
+    color: #7aadad !important;
+}
+
+.cm-s-inner .cm-variable-3,
+.cm-s-inner .cm-type,
+.cm-s-inner .cm-atom {
+    color: #378ed8 !important;
+}
+
+.cm-s-inner .cm-number {
+    color: #1a5494 !important;
+}
+
+.cm-s-inner .cm-def,
+.cm-s-inner .cm-qualifier {
+    color: #0744ac !important;
+}
+
+.cm-s-inner .cm-string {
+    color: #6f42c2 !important;
+}
+
+.cm-s-inner .cm-string-2 {
+    color: #27638f !important;
+}
+
+.cm-s-inner .cm-comment {
+    color: #9a9a9a !important;
+}
+
+.cm-s-inner .cm-meta {
+    color: #0b93be !important;
+}
+
+.cm-s-inner .cm-attribute {
+    color: #8f6aa8 !important;
+}
+
+.cm-s-inner .cm-error {
+    color: rgba(255, 255, 255, 1) !important;
+    background-color: #b9218e40 !important;
+}
+
+.cm-s-inner .CodeMirror-matchingbracket {
+    text-decoration: underline;
+    color: white !important;
+}
+
+.CodeMirror div.CodeMirror-cursor {
+    border-left: 1px solid var(--primary-color);
+    z-index: 3;
+}
+
+.cm-s-inner div.CodeMirror-selected {
+    background: rgba(167, 178, 189, 0.2) !important;
+}
+
+.cm-s-inner.CodeMirror-focused div.CodeMirror-selected {
+    background: rgba(167, 178, 189, 0.2) !important;
+}
+
+.cm-s-inner .CodeMirror-selected,
+.cm-s-inner .CodeMirror-selectedtext {
+    background-color: rgba(167, 178, 189, 0.0) !important;
+}
+
+.cm-s-inner .CodeMirror-line::-moz-selection,
+.cm-s-inner .CodeMirror-line>span::-moz-selection,
+.cm-s-inner .CodeMirror-line>span>span::-moz-selection {
+    background-color: rgba(167, 178, 189, 0.2);
+}
+
+.cm-s-inner .CodeMirror-line::selection,
+.cm-s-inner .CodeMirror-line>span::selection,
+.cm-s-inner .CodeMirror-line>span>span::selection {
+    background-color: rgba(167, 178, 189, 0.2);
+}
+
+.md-rawblock .md-rawblock-tooltip {
+    inset: auto 0.3rem auto auto;
+    transform: translateY(-120%);
+}
+
+/*
+ * Sitting - Unibody
+ */
+
+.megamenu-menu-header {
+    border: none;
+    color: var(--text-color);
+}
+
+.megamenu-menu-header #megamenu-back-btn,
+.megamenu-menu-header .megamenu-menu-header-title-back,
+.megamenu-menu-header .megamenu-menu-header-title-menu {
+    color: var(--text-color);
+}
+
+.megamenu-menu {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    box-shadow: none !important;
+}
+
+header,
+#megamenu-content {
+    background-color: var(--bg-color);
+    background-image: none !important;
+}
+
+.md-search-hit {
+    background-color: var(--search-hit-bg-color);
+}
+
+#recent-file-panel tbody tr:nth-child(2n-1) {
+    background-color: var(--recent-file-panel-n-bg-color);
+    color: var(--recent-file-panel-n-color);
+}
+
+.export-detail,
+.export-item.active,
+.export-items-list-control {
+    width: 75%;
+}</style></head><body class="typora-export"><div id="write" class="markdown-body"><ol>
+<li>(单选题) （）是发展教育的根本尺度。</li>
+</ol>
+<p>A. 科技突破
+B. 人民满意
+C. 实现共同富裕
+D. 发展生产力
+本题答案: B</p>
+<ol start="2">
+<li>(单选题) （  ）年, 习近平在出访中亚和东南亚国家期间,先后提出共建“丝绸之路经济带”和“21世纪海上丝绸之路”的重大倡议, 得到了国际社会的高度关注和积极回应</li>
+</ol>
+<p>A. 2012
+B. 2013
+C. 2014
+D. 2015
+本题答案: B</p>
+<ol start="3">
+<li>(多选题) 推进中国式现代化需要正确处理的重大关系是（  ）。</li>
+</ol>
+<p>A. 正确处理顶层设计与实践探索的关系
+B. 正确处理战略与策略的关系
+C. 正确处理守正与创新的关系
+D. 正确处理效率与公平的关系
+E. 正确处理独立自主与对外开放的关系
+本题答案: ABCDE</p>
+<ol start="4">
+<li>(单选题) 走和平发展道路是由（）决定的</li>
+</ol>
+<p>A. 当今世界百年未有之大变局</p>
+<p>B. 中华优秀传统文化</p>
+<p>C. 中国共产党性质宗旨和我国社会主义制度</p>
+<p>D. 现阶段中国的国际地位</p>
+<p>本题答案: C</p>
+<ol start="5">
+<li>(单选题) 制度的生命力在于（）</li>
+</ol>
+<p>A. 执行
+B. 真抓
+C. 严管
+D. 落实
+本题答案: A</p>
+<ol start="6">
+<li>(单选题) （  ）是改革开放以来我们党全部理论和实践的鲜明主题。</li>
+</ol>
+<p>A. 贯彻新发展理念
+B. 坚持和发展中国特色社会主义
+C. 改革开放
+D. 以经济建设为中心
+本题答案: B</p>
+<ol start="7">
+<li>(多选题) 建设一支（ ），的人民军队，是实现“两个一百年”奋斗目标、实现中华民族伟大复兴的战略支撑。</li>
+</ol>
+<p>A. 听党指挥
+B. 能打胜仗
+C. 作风优良
+D. 全心全意为人民服务
+本题答案: ABC</p>
+<ol start="8">
+<li>(多选题) 发展社会主义民主政治要（ ）</li>
+</ol>
+<p>A. 体现人民意志
+B. 保障人民权益
+C. 激发人民创造活力
+D. 用制度体系保证人民当家作主
+本题答案: ABCD</p>
+<ol start="9">
+<li>(单选题) 在党的各项建设中，处于党的基础性建设的是（ ）。</li>
+</ol>
+<p>A. 制度建设
+B. 思想建设
+C. 组织建设
+D. 反腐败斗争
+本题答案: B</p>
+<ol start="10">
+<li>(单选题) 秉持（）、相互尊重、互学互鉴理念，构建新型政党关系</li>
+</ol>
+<p>A. 彼此承认</p>
+<p>B. 团结友爱</p>
+<p>C. 求同存异
+D. 沟通交流
+本题答案: C</p>
+<ol start="11">
+<li>(单选题) 我们乘势而上开启全面建设社会主义现代化国家新征程、向第二个百年奋斗目标进军，这标志着我国进入了一个（ ）。</li>
+</ol>
+<p>A. 新发展时期
+B. 新发展方位
+C. 新发展阶段
+D. 新发展格局
+本题答案: C</p>
+<ol start="12">
+<li>(判断题) 标本兼治是新时代推进反腐败斗争的鲜明特征，既以治标遏制腐败势头，更注重治本夯实反腐的基础。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: A</p>
+<ol start="13">
+<li>(单选题) 2021年7月1日，习近平在天安门城楼上庄严宣告，经过全党全国各族人民持续奋斗，我们实现了（  ）。</li>
+</ol>
+<p>A. 第一个百年奋斗目标
+B. 社会主义现代化国家
+C. 社会主义现代化强国
+D. 中华民族伟大复兴
+本题答案: A</p>
+<ol start="14">
+<li>(判断题) 政治建设是党永葆生机活力、走好新的赶考之路的必由之路。</li>
+</ol>
+<p>A. 正确
+B. 错误
+本题答案: B</p>
+<ol start="15">
+<li>(单选题) （）是发展第一动力。</li>
+</ol>
+<p>A. 科技
+B. 人才
+C. 创新
+D. 党的领导
+本题答案: C</p>
+<ol start="16">
+<li>(填空题) 健全共建、<strong>()</strong>、__()__的社会治理制度，提升社会治理效能。</li>
+</ol>
+<p>本题答案: 共治, 共享</p>
+<ol start="17">
+<li>(填空题) 党的领导必须是__()<strong>、</strong>()__、整体的，必须体现到经济建设、政治建设、文化建设、社会建设、生态文明建设等各方面。</li>
+</ol>
+<p>本题答案: 全面的, 系统的</p>
+<ol start="18">
+<li>(单选题) （&nbsp; &nbsp; &nbsp;）是最公平的公共产品，是最普惠的民生福祉</li>
+</ol>
+<p>A. 良好的生态环境
+B. 充裕的物质供给
+C. 良好的文化氛围
+D. 公平的社会环境
+本题答案: A</p>
+<ol start="19">
+<li>(多选题) 办好人民满意的教育，（）。</li>
+</ol>
+<p>A. 大力促进教育公平
+B. 加快建设高质量教育体系
+C. 提升教育服务经济社会发展能力
+D. 坚持深化教育改革创新
+E. 坚持把教师队伍建设作为基础工作
+本题答案: ABCDE</p>
+<ol start="20">
+<li>(单选题) 下面哪一个不属于“当今世界百年未有之大变局”的表现？</li>
+</ol>
+<p>A. 新兴市场国家和发展中国家群体性崛起</p>
+<p>B. 人工智能、大数据、量子技术、基因工程等前沿科技不断取得突破
+C. 西方发达国家主导的国际政治经济秩序越发难以维系</p>
+<p>D. 工业革命以来全球自然资源与生态环境日益遭致破坏</p>
+<p>本题答案: D</p>
+<ol start="21">
+<li>(多选题) 党的十九大报告中提出全面建设社会主义现代化国家的进程分两个阶段来安排(   )。</li>
+</ol>
+<p>A. 第一阶段，从2017年到2037年在全面建成小康社会的基础上，再奋斗15年，基本实现社会主义现代化</p>
+<p>B. 第二个阶段，从2037年到本世纪中叶在基本实现现代化的基础上，再奋斗15年，把我国建成富强民主文明和谐美丽的社会主义现代化强国
+C. 第一个阶段，从2020年到2035年，在全面建成小康社会的基础上，再奋斗15年，基本实现社会主义现代化
+D. 第二个阶段，从2035年到本世纪中叶，在基本实现现代化的基础上，再奋斗15年，把我国建成富强民主文明和谐美丽的社会主义现代化强国
+本题答案: CD</p>
+<ol start="22">
+<li>(单选题) 中华民族伟大复兴的中国梦是（  ）相统一的梦。</li>
+</ol>
+<p>A. 国家情怀、民族情怀、人民情怀
+B. 国家情怀、民族情怀、社会情怀
+C. 民族情怀、世界情怀、人民情怀
+D. 国家情怀、家庭情怀、人民情怀
+本题答案: A</p>
+<ol start="23">
+<li>(多选题) 改革开放只有进行时、没有完成时，因为（ ）。</li>
+</ol>
+<p>A. 这是社会基本矛盾运动规律的深刻反映
+B. 这是总结世界社会主义实践经验得出的重要结论
+C. 这是推进党和人民事业发展的必然要求
+D. 全面建设社会主义现代化国家，根本动力仍然是改革开放
+本题答案: ABCD</p>
+<ol start="24">
+<li>(多选题) 我们确立了“两个一百年”奋斗目标，就是（  ）。</li>
+</ol>
+<p>A. 到2020年实现国内生产总值和城乡居民人均收入比2010年翻一番，全面建成小康社会
+B. 到本世纪中叶建成富强民主文明和谐美丽的社会主义现代化国家，实现中华民族伟大复兴
+C. 到2035年，基本建成社会主义现代化国家
+D. 到2025年，实现工业强国目标
+本题答案: AB</p>
+<ol start="25">
+<li>(多选题) 实施创新驱动发展战略，（），让创新成为全社会的共同行动。</li>
+</ol>
+<p>A. 要坚持面向世界科技前沿、面向经济主战场
+B. 要坚持面向国家重大需求、面向人民生命健康
+C. 坚持科技创新，增强自主创新能力
+D. 坚决打赢关键核心技术攻坚战
+本题答案: ABCD</p>
+<ol start="26">
+<li>(单选题) 深入推进党的建设必须以党的（ ）为统领。</li>
+</ol>
+<p>A. 政治建设
+B. 思想建设
+C. 作风建设
+D. 制度建设
+本题答案: A</p>
+<ol start="27">
+<li>(单选题) 我们坚定文化自信的深厚基础源自于（ ）</li>
+</ol>
+<p>A. 中华优秀传统文化
+B. 革命文化
+C. 社会主义先进文化
+D. 中国特色社会主义伟大实践
+本题答案: A</p>
+<ol start="28">
+<li>(单选题) 基层治理是国家治理的基石，统筹推进乡镇（街道）和城乡社区治理，是实现（  ）的基础工程。</li>
+</ol>
+<p>A. 国家治理体系和治理能力现代化
+B. 完善适社会治理方式和治理能力
+C. 中国特色社蝕义法详共教课学习交流
+D. 中华民族伟大复兴
+本题答案: A</p>
+<ol start="29">
+<li>(多选题) 以人民为中心是我们党（）的生动体现，是全心全意为人民服务的时代彰显。</li>
+</ol>
+<p>A. 立党为公
+B. 落实群众路线
+C. 坚持宗旨原则
+D. 执政为民
+本题答案: AD</p>
+<ol start="30">
+<li>(单选题) 坚持和加强党的全面领导，坚持党要管党、全面从严治党，以（）为着力点。</li>
+</ol>
+<p>A. 加强党的长期执政能力建设、先进性和纯洁性建设
+B. 党的政治建设
+C. 坚定理想信念宗旨
+D. 调动全党积极性、主动性、创造性
+本题答案: D</p>
+<ol start="31">
+<li>(多选题) 关于中国梦的内涵理解正确的是（  ）。</li>
+</ol>
+<p>A. 核心内容是国家富强、民族振兴、人民幸福
+B. 中国梦是国家的梦、民族的梦、归根到底是人民的梦
+C. 国家富强、民族振兴是人民幸福的基础和保障
+D. 人民幸福是国家富强、民族振兴的根本出发点和落脚点
+本题答案: ABCD</p>
+<ol start="32">
+<li>(填空题) __()__是国之大计、党之大计。</li>
+</ol>
+<p>本题答案: 教育</p>
+<ol start="33">
+<li>(多选题) 党依靠人民，推进（）走出一条中国特色社会主义道路。</li>
+</ol>
+<p>A. 改革开放
+B. 社会主义现代化建设
+C. 全面建成小康社会
+D. 社会主义现代化国家
+本题答案: AB</p>
+<ol start="34">
+<li>(单选题) （   ）是关系中华民族永续发展的根本大计</li>
+</ol>
+<p>A. 经济建设
+B. 文化建设
+C. 生态文明建设
+D. 政治建设
+本题答案: C</p>
+<ol start="35">
+<li>(多选题) 党的二十大指出，新时代新征程中国共产党的中心任务，就是（   ）。</li>
+</ol>
+<p>A. 团结带领全国各族人民全面建成社会主义现代化强国
+B. 实现第二个百年奋斗目标
+C. 以中国式现代化全面推进中华民族伟大复兴
+D. 贯彻新发展理念，促进高质量发展
+本题答案: ABC</p>
+<ol start="36">
+<li>(多选题) 保护生态环境必须依靠（），依靠（）</li>
+</ol>
+<p>A. 制度
+B. 道德
+C. 法制
+D. 法治
+本题答案: AD</p>
+<ol start="37">
+<li>(判断题) 2017年10月，党的十九大着眼中国特色社会主义事业长远发展，把习近平新时代中国特色社会主义思想确立为党必须长期坚持的指导思想并庄严地写入党章，实现了党的指导思想的与时俱进。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: A</p>
+<ol start="38">
+<li>(多选题) 党的十九大概括中国特色社会主义进入新时代的重大意义,这就是：</li>
+</ol>
+<p>A. 意味着中华民族迎来了从站起来、富起来到强起来的伟大飞跃，迎来了中华民族伟大复兴的光明前景
+B. 意味着科学社会主义在21世纪的中国焕发出强大生机活力，在世界上高高举起了中国特色社会主义伟大旗帜
+C. 意味着中国特色社会主义道路、理论、制度、文化不断发展，拓展了发展中国家走向现代化的途径
+D. 意味着中国即将建成社会主义现代化强国，全体人民走上共同富裕的之路
+E. 意味着中华民族任人宰割、饱受欺凌的时代一去不复返了
+本题答案: ABC</p>
+<ol start="39">
+<li>(多选题) 坚持党要管党、全面从严治党，以调动全党（）为着力点。</li>
+</ol>
+<p>A. 积极性
+B. 主动性
+C. 创造性
+D. 自觉性
+本题答案: ABC</p>
+<ol start="40">
+<li>(多选题) 中国梦是（   ）的梦，与世界各国人民的美好梦想相通。</li>
+</ol>
+<p>A. 和平
+B. 发展
+C. 合作
+D. 共赢
+本题答案: ABCD</p>
+<ol start="41">
+<li>(多选题) 教育优先发展，要做到（），使我国教育越办越好。</li>
+</ol>
+<p>A. 经济社会发展规划优先安排教育发展
+B. 财政资金投入优先保障教育投入
+C. 公共资源配置优先满足教育和人力资源开发需要
+D. 推动健全优先发展教育事业的体制机制
+本题答案: ABCD</p>
+<ol start="42">
+<li>(单选题) （ ）是发展行动的先导。</li>
+</ol>
+<p>A. 发展理念
+B. 发展格局
+C. 发展方向
+D. 发展策略
+本题答案: A</p>
+<ol start="43">
+<li>(判断题) 独立自主是我们立党立国的重要原则，对外开放是我国的基本国策。推进中国式现代化，必须坚持独立自主、自立自强。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: A</p>
+<ol start="44">
+<li>(多选题) 中国梦的实现途径是（   ）。</li>
+</ol>
+<p>A. 坚持中国道路
+B. 维护世界和平
+C. 弘扬中国精神
+D. 凝聚中国力量
+本题答案: ACD</p>
+<ol start="45">
+<li>(多选题) 构建新发展格局，必须（ ）。</li>
+</ol>
+<p>A. 具备强大的国内经济循环体系和稳固的基本盘，巩固和发展我国经济的强大竞争力
+B. 发挥比较优势，以国内大循环吸引全球资源要素
+C. 保证经济循环的畅通无阻
+D. 实现经济在高水平上的动态平衡
+本题答案: ABCD</p>
+<ol start="46">
+<li>(单选题) （）是当代中国发展进步的根本制度保障，具有明显制度优势。</li>
+</ol>
+<p>A. 中国特色社会主义经济制度
+B. 中国特色社会主义制度
+C. 中国特色社会主义理论体系
+D. 中国特色社会主义道路
+本题答案: B</p>
+<ol start="47">
+<li>(单选题) 党的十九届六中全会进一步明确，必须坚持（）的发展思想，发展全过程人民民主，推动人的全面发展、全体人民共同富裕取得更为明显的实质性进展。</li>
+</ol>
+<p>A. 群众路线是根本工作路线
+B. 党的建设
+C. 经济社会协调发展
+D. 以人民为中心
+本题答案: D</p>
+<ol start="48">
+<li>(单选题) 历史和现实证明，（ ）就没有中国特色社会主义的产生与发展。</li>
+</ol>
+<p>A. 没有中国共产党的指导
+B. 没有中国共产党的组织
+C. 没有中国共产党的领导
+D. 没有中国共产党的监督
+本题答案: C</p>
+<ol start="49">
+<li>(判断题) 人才是国之大计、党之大计，是国家经济社会发展的支撑力量，在国家发展中始终具有基础性先导性全局性地位。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: B</p>
+<ol start="50">
+<li>(单选题) （ ）为中国特色社会主义奠定了思想前提和理论基础。</li>
+</ol>
+<p>A. 科学社会主义基本原则
+B. 四项基本原则
+C. 科学把握历史新方位
+D. 实事求是的基本路线
+本题答案: A</p>
+<ol start="51">
+<li>(多选题) 建设人才强国，必须（）。</li>
+</ol>
+<p>A. 走好人才自主培养之路
+B. 加快建设世界重要人才中心和创新高地
+C. 坚持党对人才工作的全面领导
+D. 深化人才发展体制机制改革
+E. 营造识才爱才敬才用才的环境
+本题答案: ABCDE</p>
+<ol start="52">
+<li>(单选题) 我们党讲宗旨，讲了很多话，但说到底还是（）这句话。</li>
+</ol>
+<p>A. 以人民为中心
+B. 为人民服务
+C. 坚持人民主体地位
+D. 群众路线是根本工作路线
+本题答案: B</p>
+<ol start="53">
+<li>(单选题) 发展社会主义民主政治，最根本的是要（ ）</li>
+</ol>
+<p>A. 坚持党的领导、人民当家作主和依法治国的有机统一
+B. 实现民主政治的制度化、规范化、程序化
+C. 充分发挥人民群众的监督作用
+D. 有领导、有步骤地推进政治体制改革
+本题答案: A</p>
+<ol start="54">
+<li>(多选题) 中国梦的科学内涵是（   ）。</li>
+</ol>
+<p>A. 国家富强
+B. 社会和谐
+C. 民族振兴
+D. 人民幸福
+本题答案: ACD</p>
+<ol start="55">
+<li>(多选题) 党的十一届三中全会来，我国创造了（ ）两大奇迹，极大地改变了中国的面貌。</li>
+</ol>
+<p>A. 经济快速发展
+B. 社会长期稳定
+C. 民族团结
+D. “新四大发明”
+本题答案: AB</p>
+<ol start="56">
+<li>(多选题) 中国特色社会主义是（ ）。​</li>
+</ol>
+<p>A. 在改革开放40多年的伟大实践中得来的，在新中国成立70多年的持续探索中得来的
+B. 在中国共产党领导人民进行伟大社会革命100多年的实践中得来的
+C. 在近代以来中华民族由衰到盛180多年的历史进程中得来的
+D. 在世界社会主义500多年波澜壮阔的发展历程中得来的
+E. 在对中华文明5000多年的传承发展中得来的</p>
+<p>本题答案: ABCDE</p>
+<ol start="57">
+<li>(填空题) __()__就是党的形象，关系人心向背，关系党的生死存亡。</li>
+</ol>
+<p>本题答案: 党的作风</p>
+<ol start="58">
+<li>(单选题) 坚持以人民为中心的发展思想，在高质量发展中促进共同富裕，正确处理（）的关系，构建初次分配、再分配、三次分配协调配套的基础性制度安排。</li>
+</ol>
+<p>A. 效率和公平
+B. 收入和分配
+C. 经济和社会
+D. 政府和市场
+本题答案: A</p>
+<ol start="59">
+<li>(单选题) 核心价值观是一个民族赖以维系的（ ），是一个国家共同的思想道德基础。</li>
+</ol>
+<p>A. 精神纽带
+B. 精神阵地
+C. 精神家园
+D. 精神力量
+本题答案: A</p>
+<ol start="60">
+<li>(多选题) 中国特色社会主义进入了新时代的判断，是（ ）。</li>
+</ol>
+<p>A. 我国社会主要矛盾发生新变化的反映
+B. 党的主要任务发生新变化的反映
+C. 社会迈入人工智能新阶段的反映
+D. 我国进入创新型国家行列的反映
+E. 中国和世界关系发生新变化的反映
+本题答案: ABE</p>
+<ol start="61">
+<li>(多选题) 决定社会主义文化事业前途命运的关键是坚持（ ）的根本方向。</li>
+</ol>
+<p>A. 为经济建设服务
+B. 为人民服务
+C. 为弘扬优秀传统文化服务
+D. 为社会主义服务
+本题答案: BD</p>
+<ol start="62">
+<li>(单选题) 必须坚持（）是第一生产力。</li>
+</ol>
+<p>A. 人才
+B. 资源
+C. 科技
+D. 环境
+本题答案: C</p>
+<ol start="63">
+<li>(多选题) 文化繁荣兴盛是实现中华民族伟大复兴的必然要求，是因为（ ）</li>
+</ol>
+<p>A. 文化繁荣兴盛是实现中华民族伟大复兴的精神支撑
+B. 文化繁荣兴盛是建设社会主义现代化强国的应有之义
+C. 文化繁荣兴盛是满足人民日益增长的美好生活需要的内在要求
+D. 文化繁荣兴盛是世界文化激荡中站稳脚跟的前提基础
+本题答案: ABCD</p>
+<ol start="64">
+<li>(填空题) __()__源远流长、博大精深，是中华民族独特的精神标识，是当代中国文化的根基，是维系全世界华人的精神纽带。</li>
+</ol>
+<p>本题答案: 中华文明</p>
+<ol start="65">
+<li>(判断题) 全面从严治党，需要一体推进不敢腐、不能腐、不想腐。</li>
+</ol>
+<p>A. 正确
+B. 错误
+本题答案: A</p>
+<ol start="66">
+<li>(多选题) (    )是保障和改善民生的重要方针。</li>
+</ol>
+<p>A. 尽力而为
+B. 量力而行
+C. 突出重点
+D. 正确把握民生和发展的关系
+本题答案: AB</p>
+<ol start="67">
+<li>(多选题) 全过程人民民主展现出的( )相统一的鲜明特征，充分体现了社会主义民主政治的本质属性。</li>
+</ol>
+<p>A. 过程民主和成果民主
+B. 程序民主和实质民主
+C. 直接民主和间接民主
+D. 人民民主和国家意志
+本题答案: ABCD</p>
+<ol start="68">
+<li>(多选题) 17、我国经济社会发展已经进入到加快（）的高质量发展的新阶段</li>
+</ol>
+<p>A. 绿色化
+B. 低碳化
+C. 高端化
+D. 协调化
+本题答案: AB</p>
+<ol start="69">
+<li>(单选题) （ ）是党永葆生机活力、走好新的赶考之路的必由之路。</li>
+</ol>
+<p>A. 全面深化改革
+B. 全面依法治国
+C. 全面从严治党
+D. 全面增加党员人数
+本题答案: C</p>
+<ol start="70">
+<li>(单选题) 中国梦归根到底是（  ），必须紧紧依靠人民来实现，必须不断为人民造福。</li>
+</ol>
+<p>A. 国家的梦
+B. 人民的梦
+C. 民族的梦
+D. 世界的梦
+本题答案: B</p>
+<ol start="71">
+<li>(单选题) 一个国家的文化软实力，从根本上说，取决于其（ ）</li>
+</ol>
+<p>A. 国际传播能力
+B. 国家的综合国力
+C. 核心价值观的生命力、凝聚力、感召力
+D. 国际话语权
+本题答案: C</p>
+<ol start="72">
+<li>(多选题) 新发展阶段是（ ）。</li>
+</ol>
+<p>A. 我国社会主义初级阶段历史进程中的一个重要阶段
+B. 中国共产党带领人民迎来从站起来、富起来到强起来历史性跨越的新阶段
+C. 全面建设社会主义现代化国家、向第二个百年奋斗目标进军的重要阶段
+D. 决胜全面建成小康社会的阶段
+本题答案: ABC</p>
+<ol start="73">
+<li>(多选题) 社会主义核心价值观回答了我们要（ ）的重大问题。</li>
+</ol>
+<p>A. 建设什么样的国家
+B. 建设什么样的社会
+C. 培育什么样的公民
+D. 发展什么样的文化
+本题答案: ABC</p>
+<ol start="74">
+<li>(单选题) 坚持马克思主义在意识形态领域指导地位的制度是中国特色社会主义制度体系的一项（ ）</li>
+</ol>
+<p>A. 根本制度
+B. 基本制度
+C. 重要制度
+D. 其它制度
+本题答案: A</p>
+<ol start="75">
+<li>(多选题) 落实立德树人根本任务，必须着力解决好（）的问题，这是教育的根本问题，也是（）的核心课题。</li>
+</ol>
+<p>A. 培养什么人
+B. 怎样培养人
+C. 为谁培养人
+D. 建设教育强国
+本题答案: ABCD</p>
+<ol start="76">
+<li>(多选题) 下列中国共产党人精神谱系中，属于中国特色社会主义进入新时代铸就的伟大精神的有（ ）</li>
+</ol>
+<p>A. 脱贫攻坚精神
+B. 抗疫精神
+C. 载人航天精神
+D. 探月精神
+本题答案: ABD</p>
+<ol start="77">
+<li>(多选题) 推动建立以合作共赢为核心的新型国际关系，是我们党立足时代发展潮流和我国根本利益做出的战略选择，反映了中国人民和世界人民的共同心愿。新型国际关系，新在（       ）。</li>
+</ol>
+<p>A. 相互尊重</p>
+<p>B. 合作共赢
+C. 共同发展
+D. 公平正义
+本题答案: ABD</p>
+<ol start="78">
+<li>(单选题) 推进（）工作是破解资源环境约束突出问题、实现可持续发展的迫切需要</li>
+</ol>
+<p>A. 生态文明建设
+B. 水污染治理
+C. “双碳”
+D. 节能减排
+本题答案: C</p>
+<ol start="79">
+<li>(多选题) 当今世界正经历百年未有之大变局，其具体表现在</li>
+</ol>
+<p>A. 世界进入新的动荡变革期</p>
+<p>B. 国际力量对比发生深刻变革
+C. 经济全球化遭遇逆流</p>
+<p>D. 国际体系和国际秩序深度调整
+本题答案: ABCD</p>
+<ol start="80">
+<li>(单选题) （）是我们党区别于其他政党的显著标志。</li>
+</ol>
+<p>A. 勇于自我革命
+B. 勇于创新
+C. 勇于挑战
+D. 勇于突破
+本题答案: A</p>
+<ol start="81">
+<li>(多选题) 必须坚持教育（）。</li>
+</ol>
+<p>A. 为人民服务
+B. 为中国共产党治国理政服务
+C. 为巩固和发展中国特色社会主义制度服务
+D. 为改革开放和社会主义现代化建设服务
+本题答案: ABCD</p>
+<ol start="82">
+<li>(单选题) (  )通过了关于《中国共产党章程（修正案）》的决议，把习近平新时代中国特色社会主义思想写入党章。</li>
+</ol>
+<p>A. 党的十七大
+B. 党的十八大
+C. 党的十九大
+D. 党的二十大
+本题答案: C</p>
+<ol start="83">
+<li>(填空题) 人才强国战略，就是要牢固树立人才资源是__()__的理念。</li>
+</ol>
+<p>本题答案: 第一资源</p>
+<ol start="84">
+<li>(判断题) 在反腐败斗争中，“微腐败”不起眼，可以容忍。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: B</p>
+<ol start="85">
+<li>(多选题) 全人类共同价值包括：和平、发展、（&nbsp; ）</li>
+</ol>
+<p>A. 公平
+B. 正义
+C. 民主
+D. 自由
+本题答案: ABCD</p>
+<ol start="86">
+<li>(多选题) 以人民为中心的发展思想，不是高高在上的宣传口号，绝对不能只停留在口头上，要全方位贯穿于经济社会发展的各个环节，体现在人民群众（）的扎实提升上。</li>
+</ol>
+<p>A. 使命感
+B. 获得感
+C. 幸福感
+D. 安全感
+本题答案: BCD</p>
+<ol start="87">
+<li>(多选题) 构建人类命运共同体思想的核心是建设（&nbsp; &nbsp; &nbsp;）清洁美丽的世界。</li>
+</ol>
+<p>A. 持久和平</p>
+<p>B. 普遍安全
+C. 共同繁荣
+D. 开放包容
+本题答案: ABCD</p>
+<ol start="88">
+<li>(单选题) 新闻舆论工作有鲜明的意识形态属性，（ ）是做好新闻舆论工作的第一位要求。</li>
+</ol>
+<p>A. 做大做强主流舆论阵地
+B. 坚持正确的政治方向
+C. 弘扬正能量
+D. 管好用好互联网
+本题答案: B</p>
+<ol start="89">
+<li>(多选题) 实现高水平科技自立自强是（）。</li>
+</ol>
+<p>A. 应对风险挑战和维护国家利益的必然选择
+B. 构建新发展格局的内在要求
+C. 推动高质量发展的内在要求
+D. 满足人民美好生活需要的内在要求
+本题答案: ABCD</p>
+<ol start="90">
+<li>(单选题) 中国特色社会主义最本质的特征是（   ）。</li>
+</ol>
+<p>A. 人民共同富裕
+B. 人民当家作主
+C. 中国共产党领导
+D. 社会主义现代化
+本题答案: C</p>
+<ol start="91">
+<li>(多选题) 党依靠人民，推动党和国家事业（），推动中国特色社会主义进入新时代。</li>
+</ol>
+<p>A. 经济社会发展
+B. 人民生活更加富裕
+C. 发生历史性变革
+D. 取得历史性成就
+本题答案: CD</p>
+<ol start="92">
+<li>(单选题) 秉持什么样的全球治理观，对世界的未来和人类的前途至关重要。习近平指出：“要秉持（      ）的原则，倡导全球事务由各国一起商量着办，治理体系由大家携手建设，发展成果由各国人民共同分享。”</li>
+</ol>
+<p>A. 共商共享共赢</p>
+<p>B. 共享共建共治</p>
+<p>C. 共商共建共享</p>
+<p>D. 共治共建共赢</p>
+<p>本题答案: C</p>
+<ol start="93">
+<li>(单选题) 要坚持（ ）为主体，提高劳动报酬在初次分配中的比重，完善按要素分配政策。</li>
+</ol>
+<p>A. 按生产要素
+B. 按社会制度
+C. 按人民需求
+D. 按劳分配
+本题答案: D</p>
+<ol start="94">
+<li>(多选题) 走中国特色社会主义政治发展道路必须坚持（ ）</li>
+</ol>
+<p>A. 党的领导、人民当家作主、依法治国有机统一
+B. 积极稳妥推进政治体制改革
+C. 始终保持政治定力
+D. 发展全过程人民民主
+本题答案: ABCD</p>
+<ol start="95">
+<li>(单选题) （ ）是实现高质量发展的指导原则。</li>
+</ol>
+<p>A. 新发展阶段
+B. 新发展方位
+C. 新发展理念
+D. 供给侧改革
+本题答案: C</p>
+<ol start="96">
+<li>(单选题) （ ）是更基础、更广泛、更深厚的自信，是一个国家、一个民族发展中最基本、最深沉、最持久的力量。</li>
+</ol>
+<p>A. 文化自信
+B. 文化自觉
+C. 文化软实力
+D. 中国特色社会主义文化
+本题答案: A</p>
+<ol start="97">
+<li>(多选题) 从2020年到2035年，基本实现社会主义现代化的目标要求(    )。</li>
+</ol>
+<p>A. 在经济建设方面，我国经济实力、科技实力将大幅跃升，跻身创新型国家前列
+B. 在政治建设方面，人民平等参与、平等发展权利得到充分保障，法治国家、法治政府、法治社会基本建成，各方面制度更加完善，国家治理体系和治理能力现代化基本实现
+C. 在文化建设方面，社会文明程度达到新的高度，国家文化软实力显著增强，中华文化影响更加广泛深入
+D. 在生态文明建设方面，生态环境根本好转，美丽中国目标基本实现
+本题答案: ABCD</p>
+<ol start="98">
+<li>(多选题) 全面建设社会主义现代化国家，必须坚持中国特色社会主义文化发展道路，增强文化自信，围绕（ ）建设社会主义文化强国。</li>
+</ol>
+<p>A. 举旗帜
+B. 聚民心
+C. 育新人
+D. 兴文化
+E. 展形象
+本题答案: ABCDE</p>
+<ol start="99">
+<li>(多选题) 中国特色的社会保障体系把(   )作为根本出发点和落脚点，推动社会保障事业不断前进。</li>
+</ol>
+<p>A. 坚持人民至上
+B. 坚持共同富裕
+C. 增进民生福祉
+D. 促进社会公平
+本题答案: CD</p>
+<ol start="100">
+<li>(单选题) 中国特色社会主义是实现中华民族伟大复兴的（ ）。</li>
+</ol>
+<p>A. 精神力量
+B. 行动指南
+C. 必由之路
+D. 根本保障
+本题答案: C</p>
+<ol start="101">
+<li>(单选题) 一百年来，中国共产党团结带领中国人民进行的一切奋斗、一切牺牲、一切创造，归结起来就是一个主题（   ）。</li>
+</ol>
+<p>A. 建立新中国
+B. 追求共同富裕
+C. 实现中华民族伟大复兴
+D. 实现人民对美好生活的向往
+本题答案: C</p>
+<ol start="102">
+<li>(判断题) 毛泽东曾经讲过，“有无认真的自我批评，也是我们和其他政党互相区别的显著的标志之一”。</li>
+</ol>
+<p>A. 正确
+B. 错误
+本题答案: A</p>
+<ol start="103">
+<li>(多选题) 建设教育强国是（）。</li>
+</ol>
+<p>A. 全面建成社会主义现代化强国的战略先导
+B. 是实现高水平科技自立自强的重要支撑
+C. 是以中国式现代化全面推进中华民族伟大复兴的基础工程
+D. 必须把教育事业放在优先发展的战略位置
+本题答案: ABCD</p>
+<ol start="104">
+<li>(判断题) 中国式现代化创造了人类文明新形态，为人类实现现代化提供了新的选择。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: A</p>
+<ol start="105">
+<li>(多选题) 实施科教兴国战略，（）。</li>
+</ol>
+<p>A. 是应对新时代环境变化的必然要求
+B. 是建设创新型国家的必然要求
+C. 是应对国际竞争的有力举措
+D. 是决胜全面小康社会的重大部署
+本题答案: ABC</p>
+<ol start="106">
+<li>(判断题) 坚持和完善党的领导，是党和国家的根本所在、命脉所在，是全国各族人民的利益所在、幸福所在。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: A</p>
+<ol start="107">
+<li>(单选题) 下列哪项不属于“外交为民”</li>
+</ol>
+<p>A. 推动地缘政治多元化
+B. 维护我国海外公民和法人正当权益</p>
+<p>C. 打造海外民生工程</p>
+<p>D. 为海外中国游客提供更安全的旅游环境</p>
+<p>本题答案: A</p>
+<ol start="108">
+<li>(多选题) （   ），是我们党的初心和使命，是党领导现代化建设的出发点和落脚点，也是新发展理念的“根”和“魂。</li>
+</ol>
+<p>A. 为人民谋幸福
+B. 为人民谋复兴
+C. 为民族谋复兴
+D. 为民族谋幸福
+本题答案: AC</p>
+<ol start="109">
+<li>(填空题) __()__是国之利器。要加快实现高水平科技自立自强。</li>
+</ol>
+<p>本题答案: 科技</p>
+<ol start="110">
+<li>(填空题) __()__直接关系中国式现代化的根本方向、前途命运、最终成败。</li>
+</ol>
+<p>本题答案: 党的领导</p>
+<ol start="111">
+<li>(多选题) 习近平新时代中国特色社会主义思想是当代中国马克思主义、二十一世纪马克思主义，是（ ）的时代精华，实现了马克思主义中国化新的飞跃。</li>
+</ol>
+<p>A. 中华文化
+B. 中华品格
+C. 中国精神
+D. 中国力量
+本题答案: AC</p>
+<ol start="112">
+<li>(多选题) 社会保障体系主要涉及（  ）等方面。</li>
+</ol>
+<p>A. 社会保险
+B. 社会救助
+C. 社会福利
+D. 社会优抚
+本题答案: ABCD</p>
+<ol start="113">
+<li>(多选题) 我们培养的人，（）。</li>
+</ol>
+<p>A. 要坚定共产主义远大理想和中国特色社会主义共同理想
+B. 要有高尚的道德品质，厚植爱国主义情怀
+C. 要养成刻苦学习的习惯
+D. 要积极投身社会实践，增长经验和技能
+本题答案: ABCD</p>
+<ol start="114">
+<li>(单选题) （   ）针对当时小康低水平、不全面、发展很不平衡的实际，提出全面建设小康社会目标。</li>
+</ol>
+<p>A. 党的十四大
+B. 党的十六大
+C. 党的十五大
+D. 党的十七大
+本题答案: B</p>
+<ol start="115">
+<li>(单选题) 必须坚持教育优先发展，把（）作为教育的根本任务，办好人民满意的教育。</li>
+</ol>
+<p>A. 立德树人
+B. 社会实践
+C. 创新拔尖
+D. 专业技术
+本题答案: A</p>
+<ol start="116">
+<li>(多选题) 增进民生福祉是（      ）。</li>
+</ol>
+<p>A. 坚持立党为公、执政为民的本质要求
+B. 社会主义生产的根本目的
+C. 全面建设社会主义现代化国家的应有之义
+D. 社会主义和资本主义的根本区别之一
+本题答案: ABCD</p>
+<ol start="117">
+<li>(多选题) 我国人民依法实行（ ），这些环节扩大了人民有序政治参与，集中反映了全过程人民民主是全链条的社会主义民主。</li>
+</ol>
+<p>A. 民主选举
+B. 民主协商
+C. 民主决策
+D. 民主管理
+E. 民主监督
+本题答案: ABCDE</p>
+<ol start="118">
+<li>(多选题) 中国式现代化（  ）。</li>
+</ol>
+<p>A. 深深植根于中华优秀传统文化
+B. 体现科学社会主义的先进本质
+C. 借鉴吸收一切人类优秀文明成果
+D. 代表人类文明进步的发展方向
+E. 是一种全新的人类文明形态，但不可复制
+本题答案: ABCD</p>
+<ol start="119">
+<li>(填空题) 创新驱动发展战略，就是要坚持创新是__()__，把创新驱动落实到现代化建设整个进程和各个方面。</li>
+</ol>
+<p>本题答案: 第一动力</p>
+<ol start="120">
+<li>(判断题) 党的全面领导既坚持党的集中统一领导原则，坚持党是最高政治领导力量，又坚持民主集中制、发扬党内民主，坚持党的领导与人民当家作主、依法治国有机统一。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: A</p>
+<ol start="121">
+<li>(填空题) __()__是人民幸福之基，事关人民的生存生活生计，事关民心所向。</li>
+</ol>
+<p>本题答案: 民生</p>
+<ol start="122">
+<li>(多选题) 实施就业优先战略,必须（     ）。</li>
+</ol>
+<p>A. 健全就业公共服务体系
+B. 完善重点群体就业支持体系
+C. 扩大高校毕业生就业渠道
+D. 稳定农民工等重点群体就业
+E. 加强困难群体就业兜底帮扶
+本题答案: ABCDE</p>
+<ol start="123">
+<li>(单选题) 党的二十大报告指出，要坚持不懈用（&nbsp; ）凝心铸魂，全面加强党的思想建设，加强理想信念教育，引导全党牢记党的宗旨，自觉做共产主义远大理想和中国特色社会主义共同理想的坚定信仰者和忠实实践者。</li>
+</ol>
+<p>A. 马克思主义理论
+B. 中国特色社会主义理论体系
+C. 习近平新时代中国特色社会主义思想
+D. 毛泽东思想
+本题答案: C</p>
+<ol start="124">
+<li>(单选题) 习近平新时代中国特色社会主义思想内容十分丰富，涵盖改革发展稳定、内政外交国防、治党治国治军等各个领域、各个方面，构成了一个系统完整、逻辑严密、相互贯通的思想理论体系。下面是世界观方法论层面的表述的是（  ）。</li>
+</ol>
+<p>A. “四个全面”
+B. “十四个坚持”
+C. “十个明确”
+D. “四个伟大”
+E. “六个必须坚持”
+本题答案: E</p>
+<ol start="125">
+<li>(单选题) 中国特色社会主义的总体布局是（   ）。</li>
+</ol>
+<p>A. “三位一体
+B. “四位一体”
+C. “五位一体
+D. “六位一体”
+本题答案: C</p>
+<ol start="126">
+<li>(单选题) 发展是人类社会永恒的主题，（     ）是发展的前提。</li>
+</ol>
+<p>A. 领土完整</p>
+<p>B. 安全</p>
+<p>C. 经济基础</p>
+<p>D. 合作</p>
+<p>本题答案: B</p>
+<ol start="127">
+<li>(多选题) 党依靠人民，从小到大、从弱到强，打败了强大的内外敌人，取得了新民主主义革命胜利，实现了（），建立了中华人民共和国。</li>
+</ol>
+<p>A. 人民幸福
+B. 民族独立
+C. 人民解放
+D. 国家富强
+本题答案: BC</p>
+<ol start="128">
+<li>(单选题) （ ）是中国共产党作为马克思主义政党的根本要求。</li>
+</ol>
+<p>A. 旗帜鲜明讲政治
+B. 不断提高党员的素质
+C. 发展和壮大党员的队伍
+D. 标本兼治反腐败
+本题答案: A</p>
+<ol start="129">
+<li>(多选题) 实施（）是增强综合国力、满足人民群众美好生活需要的必然要求，是建设教育强国、科技强国、人才强国的重大举措。</li>
+</ol>
+<p>A. 科教兴国战略
+B. 人才强国战略
+C. 创新驱动发展战略
+D. “四个全面战略”
+本题答案: ABC</p>
+<ol start="130">
+<li>(填空题) __()__是实现民族振兴、赢得国际竞争主动的战略资源。</li>
+</ol>
+<p>本题答案: 人才</p>
+<ol start="131">
+<li>(单选题) 科教兴国是我国的（）。</li>
+</ol>
+<p>A. 基本国策
+B. 基本政策
+C. 基本路线
+D. 基本战略
+本题答案: A</p>
+<ol start="132">
+<li>(多选题) 实施人才强国战略，（），实施更加积极、更加开放、更加有效的人才政策。</li>
+</ol>
+<p>A. 要坚持党管人才原则
+B. 坚持尊重劳动、尊重知识、尊重人才、尊重创造
+C. 完善人才战略布局
+D. 深化人才发展体制机制改革
+本题答案: ABCD</p>
+<ol start="133">
+<li>(单选题) 党的十八大以来，我国经济已由高速增长阶段转向（ ）阶段。</li>
+</ol>
+<p>A. 世界级市场
+B. 高水平开放
+C. 强动力转换
+D. 高质量发展
+本题答案: D</p>
+<ol start="134">
+<li>(多选题) 坚持把马克思主义基本原理同（ ）相结合，用马克思主义观察时代、把握时代、引领时代，继续发展当代中国马克思主义、21世纪马克思主义。</li>
+</ol>
+<p>A. 中国具体实际相结合
+B. 中华优秀传统文化
+C. 中国精神
+D. 民族特色
+本题答案: AB</p>
+<ol start="135">
+<li>(多选题) 100多年前，中国共产党的先驱们创建了中国共产党，形成了（ ）的伟大建党精神。</li>
+</ol>
+<p>A. 坚持真理、坚守理想
+B. 践行初心、担当使命
+C. 不怕牺牲、英勇斗争
+D. 对党忠诚、不负人民
+本题答案: ABCD</p>
+<ol start="136">
+<li>(单选题) （）是党永葆生机活力、走好新的赶考之路的必由之路。</li>
+</ol>
+<p>A. 勇于自我革命
+B. 开拓创新
+C. 与时俱进
+D. 全面从严治党
+本题答案: D</p>
+<ol start="137">
+<li>(多选题) 新时代党的建设是以加强党的（ ）为主线。</li>
+</ol>
+<p>A. 长期执政能力建设
+B. 先进性建设
+C. 纯洁性建设
+D. 积极性建设
+本题答案: ABC</p>
+<ol start="138">
+<li>(单选题) 中国共产党是以（ ）为根本组织原则和领导制度的马克思主义政党。</li>
+</ol>
+<p>A. 群众路线
+B. 党章
+C. 民主集中制
+D. 政治纪律
+本题答案: C</p>
+<ol start="139">
+<li>(判断题) 习近平新时代中国特色社会主义思想是马克思主义中国化的第一次历史性飞跃。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: B</p>
+<ol start="140">
+<li>(单选题) 实现中国梦必须凝聚中国力量，这就是（  ）。</li>
+</ol>
+<p>A. 各族人民大团结的力量
+B. 中国共产党的领导力量
+C. 中高速增长的经济力量
+D. 保障有力的军事力量
+本题答案: A</p>
+<ol start="141">
+<li>(多选题) 全面建成了小康社会的重大意义是（   ）。</li>
+</ol>
+<p>A. 意味着中华民族实现千百年来的夙愿
+B. 表明我国发展和人民生活水平跃上新的大台阶
+C. 表明我国已经实现了由高速发展向高质量发展转变
+D. 是实现中华民族伟大复兴征程中的关键一步
+本题答案: ABD</p>
+<ol start="142">
+<li>(单选题) （）是中国特色社会主义的价值目标。</li>
+</ol>
+<p>A. 共同富裕
+B. 社会和谐发展
+C. 人的全面发展
+D. 文化繁荣
+本题答案: C</p>
+<ol start="143">
+<li>(单选题) 社会主义民主政治的本质属性是（&nbsp; &nbsp;）</li>
+</ol>
+<p>A. 人民当家作主
+B. 党的领导
+C. 依法治国
+D. 全过程人民民主
+本题答案: D</p>
+<ol start="144">
+<li>(判断题) 我们党的历史，就是一部不断推进马克思主义中国化的历史，就是一部不断推进理论创新、进行理论创造的历史。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: A</p>
+<ol start="145">
+<li>(单选题) 坚持党总揽全局、协调各方的领导核心地位，（ ）形象地说，这就像“众星捧月”，这个“月”就是中国共产党。</li>
+</ol>
+<p>A. 毛泽东
+B. 邓小平
+C. 江泽民
+D. 习近平
+本题答案: D</p>
+<ol start="146">
+<li>(单选题) 实现全体人民共同富裕的宏伟目标，最终靠的是（）。</li>
+</ol>
+<p>A. 人
+B. 奋斗
+C. 实干
+D. 发展
+本题答案: D</p>
+<ol start="147">
+<li>(单选题) （）是全球生态环境治理领域的突出问题，也是全人类共同面临的重大挑战</li>
+</ol>
+<p>A. 气候变化问题
+B. 环境污染问题
+C. 碳排放问题
+D. 全球变暖问题
+本题答案: A</p>
+<ol start="148">
+<li>(单选题) 习近平在莫斯科国际关系学院发表演讲时指出，这个世界越来越成为你中有我、我中有你的命运共同体，和平、发展、合作、（   ）成为时代潮流。</li>
+</ol>
+<p>A. 自由
+B. 民主
+C. 共赢
+D. 正义
+本题答案: C</p>
+<ol start="149">
+<li>(多选题) 中国特色社会主义坚持科学社会主义基本原则，并赋予其鲜明的中国特色，包括（ ）。</li>
+</ol>
+<p>A. 坚持人民代表大会制度的根本政治制度
+B. 中国共产党领导的多党合作和政治协商制度
+C. 坚持公有制为主体多种所有制经济共同发展
+D. 坚持按劳分配为主体多种分配方式并存
+E. 坚持社会主义市场经济体制
+本题答案: ABCDE</p>
+<ol start="150">
+<li>(多选题) 习近平在2022年春季学期中央党校（国家行政学院）中青年干部培训班开班式上强调，干部要守住守牢拒腐防变防线，要层层设防、处处设防，要守住（）、亲情关。</li>
+</ol>
+<p>A. 政治关
+B. 权力关
+C. 交往关
+D. 生活关
+本题答案: ABCD</p>
+<ol start="151">
+<li>(单选题) 坚定中国特色社会主义制度自信，首先要坚定对（ ）的自信，增强走中国特色社会主义政治发展道路的信心和决心。</li>
+</ol>
+<p>A. 我国的基本经济制度
+B. 中国特色社会主义政治制度
+C. 人民代表大会制度
+D. 党的领导
+本题答案: B</p>
+<ol start="152">
+<li>(多选题) 新时代好干部的标准包括信念坚定、（）。</li>
+</ol>
+<p>A. 为民服务
+B. 勤政务实
+C. 敢于担当
+D. 清正廉洁
+本题答案: ABCD</p>
+<ol start="153">
+<li>(多选题) 从2035年到本世纪中叶，建成社会主义现代化强国的目标要求(   )。</li>
+</ol>
+<p>A. 我国将拥有高度的物质文明，社会生产力水平大幅提高，核心竞争力名列世界前茅，经济总量和市场规模超越其他国家
+B. 我国将拥有高度的政治文明，形成又有集中又有民主、又有纪律又有自由、又有统一意志又有个人心情舒畅生动活泼的政治局面，依法治国和以德治国有机结合
+C. 我国将拥有高度的精神文明，践行社会主义核心价值观成为全社会自觉行动，国民素质显著提高，中国精神、中国价值、中国力量成为中国发展的重要影响力和推动力
+D. 我国将拥有高度的社会文明，城乡居民将普遍拥有较高的收入、富裕的生活、健全的基本公共服务
+本题答案: ABCD</p>
+<ol start="154">
+<li>(单选题) 坚持和加强党的全面领导，坚持党要管党、全面从严治党，以（）为根基。</li>
+</ol>
+<p>A. 加强党的长期执政能力建设、先进性和纯洁性建设
+B. 党的政治建设
+C. 坚定理想信念宗旨
+D. 调动全党积极性、主动性、创造性
+本题答案: C</p>
+<ol start="155">
+<li>(单选题) （   ）是我们坚持立党为公、执政为民的本质要求。</li>
+</ol>
+<p>A. 增进民生福祉
+B. 建立强大的国防
+C. 全面依法治国
+D. 思想政治教育
+本题答案: A</p>
+<ol start="156">
+<li>(判断题) 世界面临百年未有之大变局给中华民族伟大复兴带来重大机遇。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: A</p>
+<ol start="157">
+<li>(多选题) 健全党的全面领导制度，必须完善（ ）。</li>
+</ol>
+<p>A. 党在各种组织中发挥领导作用的制度
+B. 党协调各方的机制
+C. 党领导各项事业的具体制度
+D. 人民代表大会制度
+本题答案: ABC</p>
+<ol start="158">
+<li>(多选题) 党的十九大、十九届六中全会提出的（ ）概括了习近平新时代中国特色社会主义思想的主要内容。</li>
+</ol>
+<p>A. “六个必须坚持”
+B. “十个明确”
+C. “十四个坚持”
+D. “十三个方面成就”
+本题答案: BCD</p>
+<ol start="159">
+<li>(单选题) 党的二十大提出的（   ）,是习近平新时代中国特色社会主义思想的世界
+观、方法论和贯穿其中的立场观点方法的重要体现。</li>
+</ol>
+<p>A. “六个必须坚持”
+B. “十个明确”
+C. “十四个坚持”
+D. “十三个方面成就”
+本题答案: A</p>
+<ol start="160">
+<li>(判断题) 团结奋斗是中国共产党和中国人民最显著的精神标识，是中国人民创造历史伟业的必由之路。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: A</p>
+<ol start="161">
+<li>(单选题) （ ）是推动社会主义文化繁荣兴盛的唯一正确道路。</li>
+</ol>
+<p>A. 坚持中国特色社会主义法治发展道路
+B. 坚持中国特色社会主义政治发展道路
+C. 坚持中国特色社会主义文化发展道路
+D. 坚持中国特色社会主义生态发展道路
+本题答案: C</p>
+<ol start="162">
+<li>(多选题) 大力加强马克思主义理论建设，要（ ），为党和国家事业发展提供坚实的思想保证、精神力量和理论支撑。</li>
+</ol>
+<p>A. 加强马克思主义理论学习宣传教育
+B. 深化马克思主义理论研究和建设
+C. 加快构建中国特色哲学社会科学
+D. 坚持“二为”方向、“双百”方针
+本题答案: ABC</p>
+<ol start="163">
+<li>(多选题) （）与（）相统一，既是马克思主义的价值追求，也是社会主义的本质要求，更是中国共产党人的奋斗目标。</li>
+</ol>
+<p>A. 促进人的全面发展
+B. 促进社会稳定
+C. 促进共同富裕
+D. 促进经济发展
+本题答案: AC</p>
+<ol start="164">
+<li>(判断题) 党的领导是全面的，所以，党组织应该包揽包办一切事情。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: B</p>
+<ol start="165">
+<li>(单选题) 中国特色社会主义的战略布局是（  ）。</li>
+</ol>
+<p>A. “十个明确”
+B. “十四个坚持”
+C. “四个全面”
+D. “五位一体”
+本题答案: C</p>
+<ol start="166">
+<li>(单选题) （ ）是中国共产党最大的优势、最鲜明的品格。</li>
+</ol>
+<p>A. 全心全意为人民服务
+B. 密切联系群众
+C. 勇于自我革命
+D. 理论联系实际
+本题答案: C</p>
+<ol start="167">
+<li>(单选题) 制度的关键在（）</li>
+</ol>
+<p>A. 执行
+B. 真抓
+C. 严管
+D. 落实
+本题答案: B</p>
+<ol start="168">
+<li>(单选题) （）是国家强盛之基、安全之要。</li>
+</ol>
+<p>A. 科技自立自强
+B. 人才引进
+C. 共同富裕
+D. 改革开放
+本题答案: A</p>
+<ol start="169">
+<li>(多选题) 确保党始终总揽全局、协调各方，必须增强（ ），自觉维护党中央权威和集中统一领导，自觉在思想上政治上行动上同党中央保持高度一致。</li>
+</ol>
+<p>A. 政治意识
+B. 大局意识
+C. 核心意识
+D. 看齐意识
+本题答案: ABCD</p>
+<ol start="170">
+<li>(单选题) （ ）是坚持和发展中国特色社会主义的行动指南。</li>
+</ol>
+<p>A. 党的基本路线
+B. 党的基本理论
+C. 党的基本方略
+D. 党的基本政策
+本题答案: B</p>
+<ol start="171">
+<li>(多选题) 习近平指出：“我国要提高国家文化软实力，就必须使当代中国价值观念走向世界。”要客观真实向世界讲好中国故事，讲好中国共产党故事，讲好我们正在经历的新时代故事，帮助国外民众了解（ ）。</li>
+</ol>
+<p>A. 中国共产党为什么能
+B. 马克思主义为什么行
+C. 中国特色社会主义为什么好
+本题答案: ABC</p>
+<ol start="172">
+<li>(多选题) 全面地理解和把握新发展理念，（ ）</li>
+</ol>
+<p>A. 要从根本宗旨上把握新发展理念，坚持以人民为中心的发展思想
+B. 要从问题导向上把握新发展理念，切实解决发展不平衡不充分问题
+C. 要从忧患意识上把握新发展理念，下好先手棋，打好主动仗
+D. 新发展理念是引领我国发展全局深刻变革的科学指引
+本题答案: ABCD</p>
+<ol start="173">
+<li>(单选题) 全面深化改革能否顺利推进，关键取决于党，取决于（ ）。</li>
+</ol>
+<p>A. 全体人民的共同参与
+B. 党的集中统一领导
+C. 全方位对外开放
+D. 社会主义的发展方向
+本题答案: B</p>
+<ol start="174">
+<li>(判断题) 全面建成社会主义现代化强国关键看科技自立自强。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: A</p>
+<ol start="175">
+<li>(多选题) 习近平新时代中国特色社会主义思想回答了（ ）重大时代课题。</li>
+</ol>
+<p>A. 新时代坚持和发展什么样的中国特色社会主义、怎样坚持和发展中国特色社会主义
+B. 建设什么样的社会主义现代化强国、怎样建设社会主义现代化强国
+C. 建设什么样的长期执政的马克思主义政党、怎样建设长期执政的马克思主义政党
+D. 建设什么美好的世界、怎样建设美好世界
+本题答案: ABC</p>
+<ol start="176">
+<li>(单选题) 全球发展倡议，倡导各国坚持（    ）优先。</li>
+</ol>
+<p>A. 发展
+B. 安全
+C. 合作
+D. 效率
+本题答案: A</p>
+<ol start="177">
+<li>(单选题) （&nbsp; &nbsp; &nbsp;）作出中国特色社会主义进入了新时代这个重大政治论断，这是我国发展新的历史方位。</li>
+</ol>
+<p>A. 党的十七大
+B. 党的十八大
+C. 党的十九大
+D. 党的二十大
+本题答案: C</p>
+<ol start="178">
+<li>(判断题) 培养入才是国家和民族长远发展大计。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: A</p>
+<ol start="179">
+<li>(多选题) 新形势下党执政面临的“四大危险”包括精神懈怠危险、（）。</li>
+</ol>
+<p>A. 能力不足危险
+B. 脱离群众危险
+C. 消极腐败危险
+D. 动力不足考验
+本题答案: ABC</p>
+<ol start="180">
+<li>(多选题) 传承发展中华优秀传统文化，要推动中华优秀传统文化创造性转化、创新性发展。下列说法正确的是（ ）</li>
+</ol>
+<p>A. 创造性转化，就是要按照时代的新进步新进展，对中华优秀传统文化的内涵加以补充、拓展、完善，增强其影响力和感召力。
+B. 创造性转化，就是要按照时代特点和要求，对那些至今仍有借鉴价值的内涵和陈旧的表现形式加以改造，赋予其新的时代内涵和现代表达形式，激活其生命力。
+C. 创新性发展，就是要按照时代的新进步新进展，对中华优秀传统文化的内涵加以补充、拓展、完善，增强其影响力和感召力。
+D. 创新性发展，就是要按照时代特点和要求，对那些至今仍有借鉴价值的内涵和陈旧的表现形式加以改造，赋予其新的时代内涵和现代表达形式，激活其生命力。
+本题答案: BC</p>
+<ol start="181">
+<li>(单选题) 传承发展中华优秀传统文化，要深刻把握中华文明的突出特性。下列属于中华文明的突出特性的是（ ）①连续性 ②创新性 ③统一性 ④多样性 ⑤包容性 ⑥和平性</li>
+</ol>
+<p>A. ①②③④⑤⑥
+B. ①②③④⑤
+C. ①②④⑤⑥
+D. ①②③⑤⑥
+本题答案: D</p>
+<ol start="182">
+<li>(单选题) 经过不懈努力，党找到了（）这一跳出治乱兴衰历史周期率的第二个答案，确保党永远不变质、不变色、不变味。</li>
+</ol>
+<p>A. 新发展理念
+B. 自我革命
+C. 自我完善
+D. 总体国家安全观
+本题答案: B</p>
+<ol start="183">
+<li>(多选题) 不忘初心、牢记使命，说到底是为什么人、靠什么人的问题。以百姓心为心，与人民（），是党的初心，也是党的恒心。</li>
+</ol>
+<p>A. 同呼吸
+B. 共命运
+C. 心连心
+D. 同担当
+本题答案: ABC</p>
+<ol start="184">
+<li>(多选题) 我们要落实新时代党的建设总要求，健全全面从严治党体系，全面推进党的（）。</li>
+</ol>
+<p>A. 自我净化
+B. 自我完善
+C. 自我革新
+D. 自我提高
+本题答案: ABCD</p>
+<ol start="185">
+<li>(填空题) 中国特色社会主义制度的最大优势是__()__。</li>
+</ol>
+<p>本题答案: 中国共产党领导</p>
+<ol start="186">
+<li>(填空题) 习近平在强调坚持“第一个结合”的基础上，明确提出把__()__相结合的重大命题。</li>
+</ol>
+<p>本题答案: 马克思主义基本原理同中华优秀传统文化</p>
+<ol start="187">
+<li>(单选题) 坚持党要管党、全面从严治党，以党的（）为统领。</li>
+</ol>
+<p>A. 政治建设
+B. 思想建设
+C. 组织建设
+D. 作风建设
+本题答案: A</p>
+<ol start="188">
+<li>(判断题) 中国式现代化为广大发展中国家探索现代化道路提供了全新选择。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: A</p>
+<ol start="189">
+<li>(填空题) 反腐倡廉的核心是__()<strong>和</strong>()__。</li>
+</ol>
+<p>本题答案: 制度制约, 监督权力</p>
+<ol start="190">
+<li>(单选题) （）是我们攀登世界科技高峰的必由之路。</li>
+</ol>
+<p>A. 自主创新
+B. 脱贫攻坚
+C. 守正创新
+D. 信息技术
+本题答案: A</p>
+<ol start="191">
+<li>(多选题) （）确立为自己的初心使命。</li>
+</ol>
+<p>A. 为人民谋幸福
+B. 为民族谋复兴
+C. 为世界谋和平
+D. 为人类谋大同
+本题答案: AB</p>
+<ol start="192">
+<li>(多选题) 践行真正的多边主义，就是要（&nbsp; &nbsp; &nbsp;）。</li>
+</ol>
+<p>A. 维护以联合国为核心的国际体系
+B. 维护以国际法为基础的国际秩序
+C. 维护以联合国宪章宗旨和原则为基础的国际关系基本准则
+D. 推进地缘政治的多元化</p>
+<p>本题答案: ABC</p>
+<ol start="193">
+<li>(多选题) 改革开放是（ ）。</li>
+</ol>
+<p>A. 决定当代中国命运的关键一招
+B. 坚持和发展中国特色社会主义的必由之路
+C. 党和人民大踏步赶上时代的重要法宝
+D. 完成新时代目标任务的必然要求
+本题答案: ABCD</p>
+<ol start="194">
+<li>(多选题) 中国式现代化的本质要求是(&nbsp; &nbsp; &nbsp; )。</li>
+</ol>
+<p>A. 坚持中国共产党领导</p>
+<p>B. 坚持中国特色社会主义
+C. 实现高质量发展
+D. 发展全过程人民民主
+E. 实现全体人民共同富裕
+本题答案: ABCDE</p>
+<ol start="195">
+<li>(判断题) 把核心技术掌握在自己手中，才能真正掌握竞争和发展的主动权。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: A</p>
+<ol start="196">
+<li>(填空题) 全面深化改革的总目标是__()<strong>、</strong>()__。</li>
+</ol>
+<p>本题答案: 完善和发展中国特色社会主义制度, 推进国家治理体系和治理能力现代化</p>
+<ol start="197">
+<li>(多选题) 勇于自我革命就是要实现（ ）。</li>
+</ol>
+<p>A. 自我净化
+B. 自我完善
+C. 自我革新
+D. 自我提高
+本题答案: ABCD</p>
+<ol start="198">
+<li>(填空题) 从现在起，中国共产党的中心任务，就是团结带领全国各族人民全面建成社会主义现代化强国、实现__()__，以中国式现代化全面推进中华民族伟大复兴。</li>
+</ol>
+<p>本题答案: 第二个百年奋斗目标</p>
+<ol start="199">
+<li>(单选题) 中国坚持对外开放的基本国策，坚定奉行（ ）的开放战略。</li>
+</ol>
+<p>A. 互利共赢
+B. 不结盟
+C. “一带一路”倡议
+D. 构建人类命运共同体
+本题答案: A</p>
+<ol start="200">
+<li>(填空题) 必须坚持和完善社会主义基本经济制度，使市场在资源配置中起__()__作用，更好发挥政府作用。</li>
+</ol>
+<p>本题答案: 决定性</p>
+<ol start="201">
+<li>(判断题) 新时代新征程，中国共产党的中心任务，就是团结带领全国各族人民全面建成社会主义现代化强国、实现第一个百年奋斗目标。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: B</p>
+<ol start="202">
+<li>(单选题) 坚持和加强党的全面领导，坚持党要管党、全面从严治党，以（）为主线。</li>
+</ol>
+<p>A. 加强党的长期执政能力建设、先进性和纯洁性建设
+B. 党的政治建设
+C. 坚定理想信念宗旨
+D. 调动全党积极性、主动性、创造性
+本题答案: A</p>
+<ol start="203">
+<li>(填空题) __()__是中国特色社会主义事业的领导核心。</li>
+</ol>
+<p>本题答案: 中国共产党</p>
+<ol start="204">
+<li>(单选题) 中国力争（   ）年前实现碳达峰</li>
+</ol>
+<p>A. 2030
+B. 2035
+C. 2050
+D. 2060
+本题答案: A</p>
+<ol start="205">
+<li>(单选题) （ ）是全过程人民民主的重要体现，保障了基层群众广泛、直接、有效行使民主权利，彰显了人民当家作主的广泛性、真实性、有效性。</li>
+</ol>
+<p>A. 社会民主
+B. 协商民主
+C. 人民民主
+D. 基层民主
+本题答案: D</p>
+<ol start="206">
+<li>(多选题) 全过程人民民主是（ ）的社会主义民主。</li>
+</ol>
+<p>A. 最广泛
+B. 最真实
+C. 最有效
+D. 最管用
+本题答案: ABD</p>
+<ol start="207">
+<li>(填空题) 习近平新时代中国特色社会主义思想回答了新时代坚持和发展什么样的中国特色社会主义、怎样坚持和发展中国特色社会主义，建设什么样的社会主义现代化强国、怎样建设社会主义现代化强国，建设什么样的长期执政的马克思主义政党、怎样建设长期执政的马克思主义政党等重大时代课题，以崭新的思想内容丰富发展了__()__，形成了完整的科学体系。</li>
+</ol>
+<p>本题答案: 马克思主义</p>
+<ol start="208">
+<li>(判断题) 习近平新时代中国特色社会主义思想是在把握世界发展大势、应对全球共同挑战、维护人类共同利益的过程中创立并不断丰富发展的。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: A</p>
+<ol start="209">
+<li>(单选题) 全面建设社会主义现代化国家、全面推进中华民族伟大复兴，关键在（）。</li>
+</ol>
+<p>A. 人民
+B. 政府
+C. 党员
+D. 党
+本题答案: D</p>
+<ol start="210">
+<li>(单选题) 防范化解重大风险、精准脱贫、（）是全面建成小康社会的“三大攻坚战”</li>
+</ol>
+<p>A. 污染防治
+B. 反腐倡廉
+C. 水污染治理
+D. 废气治理
+本题答案: A</p>
+<ol start="211">
+<li>(填空题) 全面深化改革总目标是__()__、推进国家治理体系和治理能力现代化。</li>
+</ol>
+<p>本题答案: 完善和发展中国特色社会主义制度</p>
+<ol start="212">
+<li>(单选题) 全面深化改革的总目标是（   ）。</li>
+</ol>
+<p>A. 坚定道路自信、理论自信、制度自信、文化自信
+B. 完善和发展中国特色社会主义制度、推进国家治理体系和治理能力现代化
+C. 建设中国特色社会主义法治体系、建设社会主义法治国家
+D. 坚持和发展中国特色社会主义
+本题答案: B</p>
+<ol start="213">
+<li>(单选题) 发展社会主义民主政治是中国共产党团结带领中国人民实现中华民族伟大复兴中国梦的政治保证。党领导人民治理国家的基本方式是（ ）</li>
+</ol>
+<p>A. 党的领导
+B. 人民当家作主
+C. 依法治国
+D. 协商民主
+本题答案: C</p>
+<ol start="214">
+<li>(多选题) 加快构建（  ）的生态文明制度体系</li>
+</ol>
+<p>A. 产权清晰
+B. 多元参与
+C. 激励约束并重
+D. 系统完整
+本题答案: ABCD</p>
+<ol start="215">
+<li>(单选题) 民生是人民幸福之基、社会和谐之本。带领人民群众创造幸福生活，要顺应人民群众对美好生活的向往，坚持（   ）的发展思想，以（   ）为重点，发展各项社会事业。</li>
+</ol>
+<p>A. 以经济建设为中心；优先发展教育事业习交流
+B. 以人为本；提高就业质量和人民收入水平
+C. 以人民为中心；保障和改善民生
+D. 以社会和谐为中心；加强社会保障体系建设
+本题答案: C</p>
+<ol start="216">
+<li>(单选题) 民主不是装饰品，不是用来做摆设的，而是要用来解决人民需要解决的问题的。一个国家民主不民主，关键在于是不是真正做到了（ ）。</li>
+</ol>
+<p>A. 人民当家作主
+B. 依法治国
+C. 坚持人民民主
+D. 以人民为中心
+本题答案: A</p>
+<ol start="217">
+<li>(判断题) 共同富裕是中国特色社会主义的本质要求，我国很快就实现共同富裕。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: B</p>
+<ol start="218">
+<li>(多选题) 我们既要看到我国社会主要矛盾发生的变化，也要看到 (    )</li>
+</ol>
+<p>A. 我国仍处于并将长期处于社会主义初级阶段的基本国情没有变
+B. 社会主义次要矛盾没有变
+C. 坚持社会主义现代化发展道路没有变
+D. 我国是世界最大发展中国家的国际地位没有变
+E. 推进五位一体的总体布局设计没有变
+本题答案: AD</p>
+<ol start="219">
+<li>(单选题) （）提出“科学技术是第一生产力”。</li>
+</ol>
+<p>A. 毛泽东
+B. 邓小平
+C. 习近平
+D. 胡锦涛
+本题答案: B</p>
+<ol start="220">
+<li>(单选题) 世界未有之大变局正在加速演变。（  ）仍然是时代主题，但是不稳定不确定性更加突出。</li>
+</ol>
+<p>A. 发展与共享
+B. 和平与融合
+C. 和平与发展
+D. 开放与包容
+本题答案: C</p>
+<ol start="221">
+<li>(多选题) 坚持以人民为中心的发展思想，就要在高质量发展中促进共同富裕，做到（）。</li>
+</ol>
+<p>A. 发展为了人民
+B. 发展幸福人民
+C. 发展依靠人民
+D. 发展成果由人民共享
+本题答案: ACD</p>
+<ol start="222">
+<li>(单选题) 党对领导干部提出的政治要求是（ ）。</li>
+</ol>
+<p>A. 自信自强
+B. 勤政为民
+C. 坚决服从领导
+D. 忠诚干净担当
+本题答案: D</p>
+<ol start="223">
+<li>(填空题) __()__是坚持和发展中国特色社会主义的必由之路。</li>
+</ol>
+<p>本题答案: 坚持党的全面领导</p>
+<ol start="224">
+<li>(多选题) 中国特色社会主义新时代，（ ）。</li>
+</ol>
+<p>A. 是承前启后、继往开来，在新的历史条件下继续夺取中国特色社会主义伟大胜利的时代
+B. 是决胜全面建成小康社会、进而全面建设社会主义现代化强国的时代
+C. 是全国各族人民团结奋斗、不断创造美好生活、逐步实现全体人民共同富裕的时代
+D. 是全体中华儿女勠力同心、奋力实现中华民族伟大复兴中国梦的时代
+E. 是我国不断为人类作出更大贡献的时代
+本题答案: ABCDE</p>
+<ol start="225">
+<li>(单选题) 国有企业是中国特色社会主义的重要物质基础和政治基础，关系（ ）地位的巩固，关系我们党的执政地位和执政能力，关系我国社会主义制度。</li>
+</ol>
+<p>A. 人民主体
+B. 公有制主体
+C. 经济体制主体
+D. 社会发展主体
+本题答案: B</p>
+<ol start="226">
+<li>(单选题) 实现中国梦必须走中国道路，这就是（  ）。</li>
+</ol>
+<p>A. 中华民族大团结之路
+B. 社会发展之路
+C. 人民民主专政之路
+D. 中国特色社会主义道路
+本题答案: D</p>
+<ol start="227">
+<li>(多选题) 中国式现代化的特征是（   ）。</li>
+</ol>
+<p>A. 人口规模巨大的现代化
+B. 全体人民共同发展的现代化
+C. 物质文明和精神文明相协调的现代化
+D. 人与自然和谐共生的现代化
+E. 走和平发展道路的现代化
+本题答案: ACDE</p>
+<ol start="228">
+<li>(单选题) 新时代中国外交的基本准则是</li>
+</ol>
+<p>A. 坚持走和平发展道路</p>
+<p>B. 推动构建人类命运共同体</p>
+<p>C. 弘扬全人类共同价值</p>
+<p>D. 推动构建新型国际关系</p>
+<p>本题答案: A</p>
+<ol start="229">
+<li>(单选题) 新时代要坚持以人民为中心，在推动社会全面进步中促进（）的全面发展。</li>
+</ol>
+<p>A. 人
+B. 经济
+C. 政治
+D. 文化
+本题答案: A</p>
+<ol start="230">
+<li>(多选题) 守牢美丽中国建设安全底线，坚定不移走（）的文明发展道路</li>
+</ol>
+<p>A. 生产发展
+B. 生活富裕
+C. 乡风文明
+D. 生态良好
+本题答案: ABD</p>
+<ol start="231">
+<li>(单选题) 繁荣发展文化事业和文化产业，是满足人民精神文化需求、保障人民文化权益的（ ）</li>
+</ol>
+<p>A. 必经之路
+B. 前提基础
+C. 基本途径
+D. 重要保障
+本题答案: C</p>
+<ol start="232">
+<li>(多选题) 习近平新时代中国特色社会主义思想创立的时代背景是（ ）。</li>
+</ol>
+<p>A. 世界百年未有之大变局加速演进
+B. 中华民族伟大复兴进入关键时期
+C. 中国式现代化全面推进拓展
+D. 科学社会主义在21世纪的中国焕发新的蓬勃生机
+E. 中国共产党自我革命开辟新的境界
+本题答案: ABCDE</p>
+<ol start="233">
+<li>(填空题) 全面推进依法治国的总目标，是__()__，建设社会主义法治国家。</li>
+</ol>
+<p>本题答案: 建设中国特色社会主义法治体系</p>
+<ol start="234">
+<li>(多选题) 坚强的领导核心和科学的理论指导是关乎党和国家前途命运、党和人民事业成败的根本性问题。党的十九届六中全会指出，党（ ），反映了全党全军全国各族人民共同心愿。</li>
+</ol>
+<p>A. 确立习近平同志党中央的核心、全党的核心地位
+B. 全面建成小康社会
+C. 以中国式现代化推进中华民族伟大复兴
+D. 确立习近平新时代中国特色社会主义思想的指导地位
+本题答案: AD</p>
+<ol start="235">
+<li>(单选题) （ ）是中国特色社会主义最本质的特征。</li>
+</ol>
+<p>A. 以经济建设为中心
+B. 中国共产党的领导
+C. 以人为本
+D. 坚持改革开放
+本题答案: B</p>
+<ol start="236">
+<li>(单选题) 党的领导制度是我国的（ ）。</li>
+</ol>
+<p>A. 根本领导制度
+B. 重要制度
+C. 基本制度
+D. 政策策略
+本题答案: A</p>
+<ol start="237">
+<li>(单选题) （）是社会主义的本质要求，是中国式现代化的重要特征。</li>
+</ol>
+<p>A. 共同富裕
+B. 社会和谐
+C. 人民主体地位
+D. 解决社会主要矛盾
+本题答案: A</p>
+<ol start="238">
+<li>(多选题) “十四个坚持”，（ ）。</li>
+</ol>
+<p>A. ”是习近平新时代中国特色社会主义思想的重要组成部分
+B. 是在治国理政各方面作出的理论分析和政策指导</p>
+<p>C. 构成了新时代坚持和发展中国特色社会主义的基本方略
+D. 是实现“两个一百年”奋斗目标、实现中华民族伟大复兴中国梦的“路线图”和“方法论”
+本题答案: ABCD</p>
+<ol start="239">
+<li>(判断题) 科技是富国之本、兴邦大计。科技已经成为推动社会发展最活跃、最积极的因素。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: B</p>
+<ol start="240">
+<li>(多选题) 文化自信是更基础、更广泛、更深厚的自信，是一个国家、一个民族发展中（ ）的力量。</li>
+</ol>
+<p>A. 最基本
+B. 最深沉
+C. 最关键
+D. 最持久
+E. 最深远
+本题答案: ABD</p>
+<ol start="241">
+<li>(填空题) __()__是我国最高政治领导力量，党的领导制度在我国国家政治制度体系中居于统领地位。</li>
+</ol>
+<p>本题答案: 中国共产党</p>
+<ol start="242">
+<li>(单选题) 党的十九大提出，到（  ）各方面制度更加完善，国家治理体系和治理能力现代化基本实现。</li>
+</ol>
+<p>A. 2035年
+B. 2030年
+C. 2025年
+D. 2020年
+本题答案: A</p>
+<ol start="243">
+<li>(多选题) 加强和创新社会治理，就是（   ）。</li>
+</ol>
+<p>A. 在党的领导下，以政府为主导，以社会多元主体参与为基础
+B. 以维护人民群众根本利益为核心
+C. 通过合作、对话、协商、沟通等方式，依法对社会事务、社会组织和社会生活进行引导和规范，化解社会矛盾
+D. 促进社会公平，推动社会稳定有序发展。
+本题答案: ABCD</p>
+<ol start="244">
+<li>(单选题) （   ）是我国对外工作的出发点和落脚点，是中国外交的神圣使命。</li>
+</ol>
+<p>A. 维护世界和平、促进共同发展
+B. 保障国家土地、人口、资源环境
+C. 维护国家主权、安全、发展利益
+D. 推动建设现代化强国</p>
+<p>本题答案: C</p>
+<ol start="245">
+<li>(填空题) 习近平指出：“__()__是最大的民生工程、民心工程、根基工程，必须抓紧抓实抓好。”</li>
+</ol>
+<p>本题答案: 就业</p>
+<ol start="246">
+<li>(多选题) 党的十八大以来，我们坚持党要管党、全面从严治党，坚持问题导向，以整治“四风”为突破口，“四风”包括：形式主义、（）。</li>
+</ol>
+<p>A. 官僚主义
+B. 享乐主义
+C. 奢靡之风
+D. 利己主义
+本题答案: ABC</p>
+<ol start="247">
+<li>(多选题) 发展是解决我国一切问题的基础和关键，发展必须是科学发展，必须坚定不移贯彻（ ）的发展理念。</li>
+</ol>
+<p>A. 创新
+B. 协调
+C. 绿色
+D. 开放
+E. 科学
+F. 共享
+本题答案: ABCDF</p>
+<ol start="248">
+<li>(多选题) 生态环境问题归根结底是（）和（）问题</li>
+</ol>
+<p>A. 经济发展方式
+B. 社会发展方式
+C. 生活方式
+D. 生产方式
+本题答案: AC</p>
+<ol start="249">
+<li>(单选题) （ ）的发展理念，相互贯通、相互促进，是具有内在联系的集合体，要统一贯彻，不能顾此失彼，也不能相互替代。</li>
+</ol>
+<p>A. 改革、和谐、绿色、开放、共享
+B. 创新、协调、和谐、开放、共赢
+C. 创新、和谐、绿色、开放、发展
+D. 创新、协调、绿色、开放、共享
+本题答案: D</p>
+<ol start="250">
+<li>(多选题) 二十大报告指出，中国共产党立志于中华民族千秋伟业，致力于人类和平与发展崇高事业，全党同志（）。</li>
+</ol>
+<p>A. 务必不忘初心、牢记使命
+B. 务必谦虚谨慎、艰苦奋斗
+C. 务必贯彻好群众路线
+D. 务必敢于斗争、善于斗争
+本题答案: ABD</p>
+<ol start="251">
+<li>(单选题) （）始终是党的生命线和根本工作路线，是我们党永葆青春活力和战斗力的重要传家宝。</li>
+</ol>
+<p>A. 群众路线
+B. 经济路线
+C. 人民立场
+D. 政治立场
+本题答案: A</p>
+<ol start="252">
+<li>(单选题) 习近平总书记在十九大报告中指出，中国特色社会主义进入新时代，我国社会主要矛盾已经转化为（ ）。</li>
+</ol>
+<p>A. 人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾
+B. 无产阶级同资产阶级之间的矛盾
+C. 官僚资本同民族资本之间的矛盾
+D. 人民日益增长的物质文化需要同落后的社会生产之间的矛盾。
+本题答案: A</p>
+<ol start="253">
+<li>(单选题) 党自成立之日起，就把“人民”二字铭刻在心，把坚持（）高于一切鲜明地写在自己的旗帜上。</li>
+</ol>
+<p>A. 人民性
+B. 人民利益
+C. 群众路线
+D. 党的性质
+本题答案: B</p>
+<ol start="254">
+<li>(填空题) 实现中华民族伟大复兴的中国梦，就是要实现__()<strong>、</strong>()__、人民幸福。</li>
+</ol>
+<p>本题答案: 国家富强, 民族振兴</p>
+<ol start="255">
+<li>(单选题) （）是民族振兴、社会进步的基石。</li>
+</ol>
+<p>A. 科技
+B. 教育
+C. 共同富裕
+D. 人才
+本题答案: B</p>
+<ol start="256">
+<li>(单选题) 全面建成社会主义现代化强国的战略安排，把基本实现社会主义现代化的时间提前了（  ）年。</li>
+</ol>
+<p>A. 25年
+B. 15年
+C. 35年
+D. 10年
+本题答案: B</p>
+<ol start="257">
+<li>(判断题) 科技创新是百年未有之大变局中的一个关键变量，世界主要国家纷纷把科技创新作为国际战略博弈的主要战场。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: A</p>
+<ol start="258">
+<li>(单选题) 党的十九大提出，到（ ）“各方面制度更加完善，国家治理体系和治理能力现代化基本实现”。</li>
+</ol>
+<p>A. 2035年
+B. 2030年
+C. 2025年
+D. 2020年
+本题答案: A</p>
+<ol start="259">
+<li>(单选题) （&nbsp; &nbsp; ）是人类生存最为基础的条件</li>
+</ol>
+<p>A. 物质
+B. 文化
+C. 民主
+D. 生态环境
+本题答案: D</p>
+<ol start="260">
+<li>(判断题) 2018年3月，十三届全国人大一次会议通过的宪法修正案，郑重地把习近平新时代中国特色社会主义思想载入宪法，实现了国家指导思想的与时俱进，反映了全国各族人民的共同意志和全社会的共同意愿。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: A</p>
+<ol start="261">
+<li>(多选题) 在脱贫攻坚战中，稳定实现贫困人口“两不愁三保障”，即（ ）。</li>
+</ol>
+<p>A. 不愁吃
+B. 不愁穿
+C. 义务教育
+D. 基本医疗
+E. 住房安全有保障。
+本题答案: ABCDE</p>
+<ol start="262">
+<li>(单选题) 以下哪项不属于独立自主的和平外交政策的主要内容</li>
+</ol>
+<p>A. 尊重各国主权和领土完整</p>
+<p>B. 坚持国家不分大小、强弱、贫富一律平等</p>
+<p>C. 奉行防御性的外交政策</p>
+<p>D. 坚决反对一切形式的霸权主义和强权政治</p>
+<p>本题答案: C</p>
+<ol start="263">
+<li>(单选题) 党的十九大强调，党的（）是党的根本性建设，要摆在首位。</li>
+</ol>
+<p>A. 政治建设
+B. 思想建设
+C. 组织建设
+D. 作风建设
+本题答案: A</p>
+<ol start="264">
+<li>(单选题) 生态文明是人类文明发展的（）</li>
+</ol>
+<p>A. 发展方向
+B. 历史趋势
+C. 根本目标
+D. 最终趋势
+本题答案: B</p>
+<ol start="265">
+<li>(判断题) 建设堪当民族复兴重任的高素质干部队伍，要坚持德才兼备、以德为先、五湖四海、任人唯贤，树立选人用人正确导向。</li>
+</ol>
+<p>A. 正确
+B. 错误
+本题答案: A</p>
+<ol start="266">
+<li>(多选题) 全面建设社会主义现代化国家，（）。</li>
+</ol>
+<p>A. 教育是根本
+B. 科技是关键
+C. 人才是基础
+D. 改革是保证
+本题答案: ABC</p>
+<ol start="267">
+<li>(单选题) 文化软实力集中体现了一个国家基于文化而具有的凝聚力和（ ），以及由此产生的吸引力和影响力。</li>
+</ol>
+<p>A. 精神力
+B. 软实力
+C. 向心力
+D. 生命力
+本题答案: D</p>
+<ol start="268">
+<li>(单选题) 坚持以（      ）为基础走和平发展道路。</li>
+</ol>
+<p>A. 反对殖民主义、霸权主义
+B. 相互尊重、合作共赢</p>
+<p>C. 平等互信</p>
+<p>D. 包容互鉴</p>
+<p>本题答案: B</p>
+<ol start="269">
+<li>(多选题) 党是最高政治领导力量，这是由我国（ ）和（ ）所决定的。</li>
+</ol>
+<p>A. 国家性质
+B. 国体政体
+C. 经济基础
+D. 经济制度</p>
+<p>本题答案: AB</p>
+<ol start="270">
+<li>(填空题) 中国特色社会主义最本质的特征是__()__。</li>
+</ol>
+<p>本题答案: 中国共产党领导</p>
+<ol start="271">
+<li>(判断题) 坚持党对人才工作的全面领导，这是做好人才工作的根本保证。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: A</p>
+<ol start="272">
+<li>(多选题) 坚持和发展中国特色社会主义的总任务是（   ）。</li>
+</ol>
+<p>A. 解放和发展社会生产力
+B. 实现社会主义现代化和中华民族伟大复兴
+C. 在全面建成小康社会的基础上，分两步走在本世纪中叶建成富强民主文明和谐美丽的社会主义现代化强国，以中国式现代化推进中华民族伟大复兴
+D. 中国梦是中华民族伟大复兴的形象表达
+本题答案: BC</p>
+<ol start="273">
+<li>(多选题) 新形势下党执政面临的“四大考验”包括长期执政考验、（）。</li>
+</ol>
+<p>A. 改革开放考验
+B. 市场经济考验
+C. 外部环境考验
+D. 管党治党考验
+本题答案: ABC</p>
+<ol start="274">
+<li>(单选题) （）是中国共产党的根本政治立场。</li>
+</ol>
+<p>A. 人民地位
+B. 人民立场
+C. 群众路线
+D. 实事求是
+本题答案: B</p>
+<ol start="275">
+<li>(单选题) 坚持和发展中国特色社会主义，总任务是（   ）。</li>
+</ol>
+<p>A. 完善和发展中国特色社会主义制度、推进国家治理体系和治理能力现代化
+B. 建设中国特色社会主义法治体系、建设社会主义法治国家
+C. 实现社会主义现代化和中华民族伟大复兴，在全面建成小康社会的基础上，分两步走在本世纪中叶建成富强民主文明和谐美丽的社会主义现代化强国
+D. 建设一支听党指挥、能打胜仗、作风优良的人民军队，把人民军队建设成为世界一流军队
+本题答案: C</p>
+<ol start="276">
+<li>(单选题) 构建“丝绸之路经济带”，要创新合作模式，加强“五通”，即政策沟通、设施联通、贸易畅通、资金融通和（     ）。</li>
+</ol>
+<p>A. 情谊相通</p>
+<p>B. 和平相通</p>
+<p>C. 民心相通</p>
+<p>D. 友谊相通</p>
+<p>本题答案: C</p>
+<ol start="277">
+<li>(填空题) __()__继承和发展马克思列宁主义、毛泽东思想、邓小平理论、“三个代表”重要思想、科学发展观，是马克思主义在当代中国发展的最新理论成果，开辟了马克思主义中国化时代化新境界。</li>
+</ol>
+<p>本题答案: 习近平新时代中国特色社会主义思想</p>
+<ol start="278">
+<li>(单选题) 构建高水平社会主义市场经济体制，关键是要（ ）。</li>
+</ol>
+<p>A. 处理好政府和市场的关系
+B. 处理好当前利益和长远利益的关系
+C. 处理好中国和外国的关系
+D. 处理好效率和公平的关系
+本题答案: A</p>
+<ol start="279">
+<li>(多选题) 处理好绿水青山和金山银山的关系，关键在（），关键在（）</li>
+</ol>
+<p>A. 人
+B. 方向
+C. 经济
+D. 思路
+本题答案: AD</p>
+<ol start="280">
+<li>(单选题) (  )首次把“小康”作为经济建设总的奋斗目标。</li>
+</ol>
+<p>A. 党的十七大
+B. 党的十五大
+C. 党的十二大
+D. 党的十一届三中全会
+本题答案: C</p>
+<ol start="281">
+<li>(单选题) 全面从严治党关键在（ ）。</li>
+</ol>
+<p>A. 加强党的领导
+B. 全面
+C. 严
+D. 治
+本题答案: C</p>
+<ol start="282">
+<li>(单选题) “发展全过程人民民主”作为习近平新时代中国特色社会主义思想的重要内容纳入“十个明确”之中，是党的（ ）。</li>
+</ol>
+<p>A. 十九大
+B. 十九届六中全会
+C. 二十大
+D. 二十届二中全会
+本题答案: B</p>
+<ol start="283">
+<li>(填空题) 教育、<strong>()</strong>、人才是全面建设社会主义现代化国家的基础性、战略性支撑。</li>
+</ol>
+<p>本题答案: 科技</p>
+<ol start="284">
+<li>(单选题) 调整优化（）是从源头推动发展方式绿色转型的重要任务</li>
+</ol>
+<p>A. 经济结构
+B. 产业结构
+C. 能源结构
+D. 交通运输结构
+本题答案: A</p>
+<ol start="285">
+<li>(多选题) 始终把群众作为智慧和力量的源泉，始终把（）深深扎根于人民的创造性实践中。</li>
+</ol>
+<p>A. 政治智慧的增长
+B. 政治素质的提升
+C. 群众基础的广泛
+D. 执政本领的增强
+本题答案: AB</p>
+<ol start="286">
+<li>(判断题) 实现高水平科技自立自强是国家强盛和民族复兴的战略基石。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: A</p>
+<ol start="287">
+<li>(多选题) 不断创新社会治理方式 .要做到（     ）。</li>
+</ol>
+<p>A. 正确处理好维稳与维权、活力与秩序的关系
+B. 运用法治思维和法治方式统筹社会力量、平衡社会利益、调节社会关系。
+C. 强化互联网思维，推进政府决策科学化、社会治理精准化、公共服务高效化。
+D. 坚持系统思维，综合运用专业化工作方法提升社会治理效能
+本题答案: ABCD</p>
+<ol start="288">
+<li>(多选题) 党的十八大以来，党坚持依规治党，严格遵守党章，形成比较完善的党内法规体系，严格制度执行，党的建设（）水平明显提高。</li>
+</ol>
+<p>A. 科学化
+B. 制度化
+C. 程序化
+D. 规范化
+本题答案: ABD</p>
+<ol start="289">
+<li>(判断题) 全面从严治党，核心是加强党的领导，基础在全面，关键在严，要害在治。</li>
+</ol>
+<p>A. 正确
+B. 错误
+本题答案: A</p>
+<ol start="290">
+<li>(填空题) “两个确立”是确立习近平同志党中央的核心、全党的核心地位，确立__()__。</li>
+</ol>
+<p>本题答案: 习近平新时代中国特色社会主义思想的指导地位</p>
+<ol start="291">
+<li>(单选题) 马克思主义政党站在人民立场上，始终将最广大人民群众的根本利益作为自己的（）。</li>
+</ol>
+<p>A. 最终目标
+B. 根本宗旨
+C. 核心立场
+D. 最高利益
+本题答案: D</p>
+<ol start="292">
+<li>(单选题) 构建人类命运共同体，就是要携手世界各国人民共同建设持久和平、普遍安全、共同繁荣、开放包容、（    ）的世界。</li>
+</ol>
+<p>A. 长期发展
+B. 清洁美丽
+C. 长期共存
+D. 美丽和谐
+本题答案: B</p>
+<ol start="293">
+<li>(单选题) (  ）是最大的民生工程、民心工程、根基工程，是社会稳定的重要保障。
+B 共同富裕</li>
+</ol>
+<p>A. 生产
+B. 就业
+C. 生活水平
+本题答案: B</p>
+<ol start="294">
+<li>(单选题) 从全面建设社会主义现代化国家进程的阶段安排看来，到2035年，我国将（  ）。</li>
+</ol>
+<p>A. 全面建成小康社会
+B. 实现中华民族伟大复兴的中国梦
+C. 把我国建设成为富强美丽文明和谐的社会现代化强国
+D. 基本实现社会主义现代化
+本题答案: D</p>
+<ol start="295">
+<li>(判断题) “两个维护”,是党在新时代取得的重大政治成果，对新时代党和国家事业发展、对推进中华民族伟大复兴历史进程具有决定性意义。</li>
+</ol>
+<p>A. 是
+B. 否
+本题答案: B</p>
+<ol start="296">
+<li>(多选题) 中国基于本国国情发展全过程人民民主，既有着鲜明的中国特色，也体现了全人类对民主的共同追求；既推动了中国的发展与中华民族的复兴，也丰富了人类政治文明形态。因此，全过程人民民主提出的重大意义在于（ ）</li>
+</ol>
+<p>A. 为人类民主事业发展探索新的路径
+B. 走符合国情的民主发展道路
+C. 推动国际关系民主化
+D. 加强文明交流互鉴
+本题答案: AB</p>
+<ol start="297">
+<li>(多选题) 推进中国式现代化需要牢牢把握的重大原则是（  ）。</li>
+</ol>
+<p>A. 坚持和加强党的全面领导
+B. 坚持中国特色社会主义道路
+C. 坚持以人民为中心的发展思想
+D. 坚持深化改革开放
+E. 坚持发扬斗争精神
+本题答案: ABCDE</p>
+<ol start="298">
+<li>(多选题) 公有制经济包括（ ）。</li>
+</ol>
+<p>A. 国有经济
+B. 集体经济
+C. 混合所有制经济中的国有成分
+D. 混合所有制经济中的集体成分
+本题答案: ABCD</p>
+<ol start="299">
+<li>(填空题) __()__是民生之源，是改善民生、实现发展成果由人民共享最重要最直接的方式。</li>
+</ol>
+<p>本题答案: 收入分配</p>
+<ol start="300">
+<li>(单选题) （）是科技创新的源头。我国面临的很多“卡脖子”技术问题，根子是基础理论研究跟不上。</li>
+</ol>
+<p>A. 应用研究
+B. 国家实验室
+C. 经济特区
+D. 基础研究
+本题答案: D</p>
+<ol start="301">
+<li>(单选题) （ ）是实现中华民族伟大复兴的根本保证。</li>
+</ol>
+<p>A. 坚持以经济建设为中心
+B. 坚持改革开放
+C. 坚持全面依法治国
+D. 坚持中国共产党领导
+本题答案: D</p>
+<ol start="302">
+<li>(单选题) 现代化经济体系必须坚持质量第一、（ ）优先。</li>
+</ol>
+<p>A. 利益
+B. 速度
+C. 人才
+D. 效益
+本题答案: D</p>
+<ol start="303">
+<li>(单选题) 发展全过程人民民主是中国式现代化的（ ）</li>
+</ol>
+<p>A. 主要特征
+B. 基本内涵
+C. 本质要求
+D. 显著特色
+本题答案: C</p>
+<ol start="304">
+<li>(多选题) 中国特色社会主义事业总体布局是“五位一体”、战略布局是“四个全面”，强调坚定（ ）。</li>
+</ol>
+<p>A. 道路自信
+B. 理论自信
+C. 制度自信
+D. 文化自信
+本题答案: ABCD</p>
+</div></body></html>
